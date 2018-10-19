@@ -1,8 +1,8 @@
 class Player extends MovableObject
 {
-  constructor(health, position, size)
+  constructor(health, position, size, tag)
   {
-    super(health, position, size);
+    super(health, position, size, tag);
   }
 
   drawPlayer()

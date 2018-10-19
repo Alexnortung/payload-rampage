@@ -9,14 +9,16 @@ function setup()
 class TowerDefenseGame {
   constructor(){
     this.gold = 100;
-    this.gameObject = [];
+    this.gameObjects = [];
 
-    this.player = new Player(100, new Vector(50, 50), new Vector(10, 10));
+    this.player = new Player(100, new Vector(50, 50), new Vector(10, 10), 'Player');
 
-    setInterval(this.update, 16);
+    setInterval(()=>this.update(), 16);
   }
 
-  update(){
+  update()
+  {
+    background(52);
     this.player.drawPlayer();
   }
 

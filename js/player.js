@@ -1,8 +1,8 @@
 class Player extends MovableObject
 {
-  constructor(game, health, position, size, tag)
+  constructor(game, position, size, options)
   {
-    super(game, health, position, size, tag);
+    super(game, position, size, options);
 
     this.weapon = new Weapon(this.game, this.position, new Vector(1, 1), 2, {});
 

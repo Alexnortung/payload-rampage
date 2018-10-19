@@ -1,13 +1,17 @@
 class MovableObject extends GameObject
 {
-    constructor(game, health, position, size, options)
+    constructor(game, position,size, options)
     {
         super(game, position, size, options);
-        this.health = health;
 
         this.velocity = new Vector(0,0);
         this.maxVelocity = Infinity;
+        if (typeof options === "object") {
+          typeof options.health? this.health = options.health: this.health = 100;
+        }
+
         this.isGrounded = false;
+
     }
 
     setVelocity(velocity)
@@ -18,7 +22,9 @@ class MovableObject extends GameObject
 
     update(){
       //add gravity to velocity
+      this.velocity.addTo(game.gravity);
       //check collisions
+
       //check max movement
 
 

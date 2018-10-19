@@ -1,6 +1,7 @@
 class Projectile extends MovableObject{
   constructor(game, position, size, velocity, damage){
     super(game, position, size, {tag: ['projectile']});
+
     this.velocity = velocity;
     this.damage = damage;
   }

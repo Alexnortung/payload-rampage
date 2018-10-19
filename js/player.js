@@ -7,6 +7,6 @@ class Player extends MoveableObject
 
   drawPlayer()
   {
-    rect(this.position.x, this.position.y, 100, 100);
+    rect(this.position.x, this.position.y, this.size.x, this.size.y);
   }
 }

@@ -1,10 +1,10 @@
 class MovableObject extends GameObject
 {
-    constructor(health, position, size, tag)
+    constructor(game, health, position, size, tag)
     {
-        super(position, size, tag);
+        super(game, position, size, tag);
         this.health = health;
-        
+
         this.velocity = new Vector(0,0);
         this.maxVelocity = Infinity;
     }

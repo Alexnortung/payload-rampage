@@ -1,5 +1,5 @@
 class GameObject{
-  constructor(position, scale){
+  constructor(position, size){
     this.position = position;
     this.size = size;
 

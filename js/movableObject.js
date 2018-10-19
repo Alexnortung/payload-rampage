@@ -5,7 +5,7 @@ class MovableObject extends GameObject
         super(position, size);
         this.health = health;
         
-        this.velocity = {x: x, y: y};
+        this.velocity = new Vector(0,0);
         this.maxVelocity = Infinity;
     }
 
@@ -18,6 +18,4 @@ class MovableObject extends GameObject
     {
         this.position = this.position.add(this.velocity);
     }
-
-
 }

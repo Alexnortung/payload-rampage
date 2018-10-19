@@ -1,9 +1,9 @@
+let game;
 function setup()
 {
   createCanvas(600, 600);
   background(52);
-
-  var game = new TowerDefenseGame();
+  game = new TowerDefenseGame();
 }
 
 class TowerDefenseGame {

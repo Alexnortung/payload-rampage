@@ -1,4 +1,4 @@
-class Player extends MoveableObject
+class Player extends MovableObject
 {
   constructor(health, position, size)
   {

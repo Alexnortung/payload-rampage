@@ -1,7 +1,7 @@
 class GameObject{
   constructor(position, scale){
     this.position = position;
-    this.scale = scale;
+    this.size = size;
 
   }
 
@@ -9,6 +9,8 @@ class GameObject{
     this.position = position;
   }
 
-  
+
+
+
 
 }

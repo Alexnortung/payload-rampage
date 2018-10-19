@@ -1,12 +1,12 @@
-class Player
+class Player extends MoveableObject
 {
-
-
-  constructor()
+  constructor(health, position)
   {
-    this.movement = new moveableObject();
+    super(health, position);
+  }
 
-    this.x = 0;
-    this.y = 0;
+  drawPlayer()
+  {
+    rect(this.position.x, this.position.y, 100, 100);
   }
 }

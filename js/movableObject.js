@@ -7,6 +7,7 @@ class MovableObject extends GameObject
 
         this.velocity = new Vector(0,0);
         this.maxVelocity = Infinity;
+        this.isGrounded = false;
     }
 
     setVelocity(velocity)

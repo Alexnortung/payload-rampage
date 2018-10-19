@@ -22,7 +22,7 @@ class TowerDefenseGame {
     background(52);
     for (let i = 0; i < this.gameObjects.length; i++)
     {
-      this.gameObjects.update();
+      this.gameObjects[i].update();
     }
 
     this.player.drawPlayer();

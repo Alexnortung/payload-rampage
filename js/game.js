@@ -22,12 +22,18 @@ class TowerDefenseGame {
     for (let i = 0; i < this.gameObjects.length; i++)
     {
       this.gameObjects[i].update();
+
+      if(typeof this.gameObjects[i].draw == 'function')
+      {
+        this.gameObjects[i].draw();
+      }
     }
 
-    this.player.drawPlayer();
+    this.draw();
   }
 
-  draw() {
-
+  draw()
+  {
+    this.player.drawPlayer();
   }
 }

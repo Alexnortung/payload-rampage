@@ -1,8 +1,8 @@
 class MovableObject extends GameObject
 {
-    constructor(game, health, position, size, tag)
+    constructor(game, health, position, size, options)
     {
-        super(game, position, size, tag);
+        super(game, position, size, options);
         this.health = health;
 
         this.velocity = new Vector(0,0);

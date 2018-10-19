@@ -4,8 +4,11 @@ class Player extends MovableObject
   {
     super(game, health, position, size, tag);
 
+    this.weapon = new Weapon(this.game, this.position, new Vector(1, 1), 2, {});
+
     window.addEventListener('keydown',(e)=>this.setDirectionPress(e),false);
     window.addEventListener('keyup',(e)=>this.setDirectionRelease(e),false);
+    window.addEventListener('click', (e)=>this.Fire1(e), false);
   }
 
   drawPlayer()
@@ -44,6 +47,14 @@ class Player extends MovableObject
     else if(e.keyCode == 65)
     {
       this.setVelocity(new Vector(0,0));
+    }
+  }
+
+  Fire1(e)
+  {
+    if(typeof this.weapon != 'undefined' || this.weapon != null)
+    {
+      this.weapon.shoot(this.position, new Vector(1,0));
     }
   }
 }

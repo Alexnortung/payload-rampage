@@ -1,8 +1,8 @@
 class Player extends MovableObject
 {
-  constructor(game, health, position, size, tag)
+  constructor(game, position, size, options)
   {
-    super(game, health, position, size, tag);
+    super(game, position, size, options);
 
     window.addEventListener('keydown',(e)=>this.setDirection(e),false);
   }

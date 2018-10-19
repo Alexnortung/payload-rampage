@@ -11,7 +11,8 @@ class TowerDefenseGame {
     this.gold = 100;
     this.gameObjects = [];
 
-    this.player = new Player(this, 100, new Vector(50, 50), new Vector(10, 10), ['player']);
+    this.player = new Player(this, new Vector(50, 50), new Vector(10, 10),{tags:["player"], health: 100});
+    this.gravity = new Vector(0,1);
 
     setInterval(()=>this.update(), 16);
   }

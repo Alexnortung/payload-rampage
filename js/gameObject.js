@@ -12,7 +12,9 @@ class GameObject{
     this.position = position;
   }
 
-
+  update(){
+    
+  }
 
 
 

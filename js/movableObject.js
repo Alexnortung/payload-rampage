@@ -14,8 +14,17 @@ class MovableObject extends GameObject
         this.velocity = velocity;
     }
 
-    move()
-    {
-        this.position = this.position.add(this.velocity);
+
+    update(){
+      //add gravity to velocity
+      //check collisions
+      //check max movement
+
+
+
+      this.position = this.position.add(this.velocity);
+
+
     }
+
 }

@@ -1,7 +1,10 @@
 class GameObject{
-  constructor(position, size){
+  constructor(game, position, size){
     this.position = position;
     this.size = size;
+
+    this.game = game;
+    game.gameObjects.push(this);
 
   }
 

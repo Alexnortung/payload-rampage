@@ -1,4 +1,4 @@
-let gamee;
+let game;
 function setup()
 {
   createCanvas(600, 600);

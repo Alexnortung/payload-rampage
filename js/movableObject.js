@@ -69,7 +69,6 @@ class MovableObject extends GameObject
           this.onCollide(elem);
         }
 
-
       }
 
       //check ladder

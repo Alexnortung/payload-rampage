@@ -3,6 +3,11 @@ class Tile extends GameObject
     constructor(game, position, size, options, images, imageId)
     {
         super(game, position, size, options);
+        if (typeof options === "object") {
+          typeof options.isOneway === "boolean" ? this.isOneway = options.isOneway: this.isOneway = false;
+        } else {
+          this.isOneway = false;
+        }
         this.imageId = imageId;
     }
 
@@ -30,11 +35,11 @@ class Tile extends GameObject
             case 3:
                 return images.stone_1;
                 break;
-        
+
             case 4:
                 return images.stone_2;
                 break;
-            
+
             case 5:
                 return images.stone_3;
 
@@ -46,22 +51,22 @@ class Tile extends GameObject
 
             case 8:
                 return images.half_buttom;
-                
+
             case 10:
                 return images.gem;
-            
+
             case 11:
                 return images.grass;
 
             case 18:
                 return images.crystal_top_left;
-            
+
             case 19:
                 return images.crystal_top_right;
 
             case 23:
                 return images.crystal_bot_left;
-            
+
             case 24:
                 return images.crystal_bot_right;
 

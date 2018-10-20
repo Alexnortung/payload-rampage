@@ -23,7 +23,18 @@ class MovableObject extends GameObject
     update(){
       //add gravity to velocity
       this.velocity.addTo(game.gravity);
+
       //check collisions
+      const collisions = this.game.checkCollisions(this);
+      for (var i = 0; i < collisions.length; i++) {
+        if (collisions[i].x) {
+          this.velocity.x = 0;
+        }
+        if (collisions[i].y) {
+          this.velocity.y = 0;
+        }
+      }
+
 
       //check max movement
 

@@ -28,6 +28,11 @@ class GameObject{
     return isOverlapping;
   }
 
+  overlapsPosition(position){
+    const isOverlapping = isPointInsideRectangle(position, this.position, this.position.add(this.size));
+    return isOverlapping;
+  }
+
   destroy(){
     this.game.destroyGameObject(this.id);
   }

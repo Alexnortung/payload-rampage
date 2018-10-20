@@ -7,6 +7,14 @@ class SpikeTrap extends Trap {
     }
 
     super(game, position, SpikeTrap._size, options);
+
+    new AttachedTrigger(game, this)
+  }
+
+  attack(){
+
+
+    Trap.prototype.attack.call(this);
   }
 
   static get _size() {
@@ -21,4 +29,5 @@ class SpikeTrap extends Trap {
   static get _defaultCost() {
     return 180;
   }
+
 }

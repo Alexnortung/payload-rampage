@@ -32,7 +32,7 @@ class MapBuilding
                             let core = new CoreCrystal(this.game, position, size, {tags: ['Core']}, firstTile);
                             //console.log(core);
                         }
-                        else if(id == 33 || id == 43 || id == 44)
+                        else if(id == 34 || id == 43 || id == 44)
                         {
                             let tile = new Tile(this.game, new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight), new Vector(this.mapData.tilewidth, this.mapData.tileheight), {isSolid: false}, images, id);
                             let core = this.game.findGameObjectByTag('Core');
@@ -51,7 +51,7 @@ class MapBuilding
                             let firstTile = new Tile(this.game, position, size, options, images, id);
                             let core = new Portal(this.game, position, new Vector(size.x * 2, size.y * 2), {isSolid: false,tags: ['Portal']}, firstTile);
                         }
-                        else if(id == 32 || id == 33 || id == 34)
+                        else if(id == 32 || id == 41 || id == 42)
                         {
                             let options = {isSolid: false};
                             let tile = new Tile(this.game, new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight), new Vector(this.mapData.tilewidth, this.mapData.tileheight), options, images, id);

@@ -18,7 +18,7 @@ class MapBuilding
                 let id = this.mapData.layers[j].data[i];
                 if(id != 0)
                 {
-                    if(j == 0)
+                    if(j == 1)
                     {
                         var y = Math.floor( i / this.mapData.width);
                         var x = i % this.mapData.width;
@@ -63,6 +63,14 @@ class MapBuilding
                         {
                             new Tile(this.game, new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight), new Vector(this.mapData.tilewidth, (this.mapData.tileheight / 2)), {isSolid: true}, images, id);
                         }
+                        else if(id == 23)
+                        {
+                            let options = {
+                                isSolid: false,
+                                tags: ['ladder'],
+                            };
+                            new Tile(this.game, new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight), new Vector(this.mapData.tilewidth, this.mapData.tileheight), options, images, id);
+                        }
                         else
                         {
                             let options = {
@@ -73,6 +81,9 @@ class MapBuilding
                     }
                     else
                     {
+                        var y = Math.floor( i / this.mapData.width);
+                        var x = i % this.mapData.width;
+
                         let options = {
                             isSolid: false,
                         };

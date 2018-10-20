@@ -38,9 +38,18 @@ class Tile extends GameObject
         
             case 4:
                 return images.stone_2;
-                
+
             case 5:
                 return images.stone_3;
+
+            case 6:
+                return images.bg_stone_1;
+
+            case 7:
+                return images.bg_bone;
+
+            case 8:
+                return image.bg_gem;
 
             case 11:
                 return images.bone;
@@ -53,9 +62,21 @@ class Tile extends GameObject
                 
             case 15:
                 return images.gem;
+
+            case 16:
+                return images.stone_2;
+
+            case 17:
+                return images.bg_earth;
+
+            case 19:
+                return images.stone_3;
             
             case 21:
                 return images.grass;
+
+            case 23:
+                return images.ladder;
 
             case 31:
                 return images.portal_top_left;

@@ -27,6 +27,17 @@ function preload()
   var portal_bot_left = loadImage("assets/objects/Portal/Portal_bot_left.png");
   var portal_bot_right = loadImage("assets/objects/Portal/Portal_bot_right.png");
 
+  var bone_tile_bg = loadImage("assets/tiles/background/bone-tile-BG.png");
+  var earth_tile_bg = loadImage("assets/tiles/background/earth-tile-BG.png");
+  var gem_tile_bg = loadImage("assets/tiles/background/gem-tile-BG.png");
+  var rib_tile_bg = loadImage("assets/tiles/background/rib-tile-BG.png");
+  var skeleton_tile_bg = loadImage("assets/tiles/background/sleleton-tile-BG.png");
+  var stone_tile_1_bg = loadImage("assets/tiles/background/stone-tile-1-BG.png");
+  var stone_tile_2_bg = loadImage("assets/tiles/background/stone-tile-2-BG.png");
+  var stone_tile_3_bg = loadImage("assets/tiles/background/stone-tile-3-BG.png");
+
+  var ladder = loadImage("assets/objects/ladder/Ladder.png");
+
   images =
   {
     dirt: dirt_img,
@@ -50,6 +61,20 @@ function preload()
     portal_top_right: portal_top_right,
     portal_bot_left: portal_bot_left,
     portal_bot_right: portal_bot_right,
+
+    bg_stone_1: stone_tile_1_bg,
+    bg_stone_2: stone_tile_2_bg,
+    bg_stone_3: stone_tile_3_bg,
+
+    bg_bone: bone_tile_bg,
+    bg_earth: earth_tile_bg,
+    bg_gem: gem_tile_bg,
+    bg_rib: rib_tile_bg,
+    bg_skeleton: skeleton_tile_bg,
+
+    ladder: ladder,
+
+
   };
 }
 

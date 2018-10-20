@@ -1,6 +1,6 @@
 class MapBuilding
 {
-    constructor(game)
+    constructor(game, images)
     {
         this.game = game;
         this.mapData = { "height":20,
@@ -37,12 +37,12 @@ class MapBuilding
 
         for (let i = 0; i < (this.mapData.width * this.mapData.height); i++)
         {
-            if(this.mapData.layers[0].data[i] == 1)
+            if(this.mapData.layers[0].data[i] != 0)
             {
-                var y = Math.floor( i / 20 );
-                var x = i % 20;
+                var y = Math.floor( i / this.mapData.width);
+                var x = i % this.mapData.width;
 
-                new Tile(this.game, new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight), new Vector(this.mapData.tilewidth, this.mapData.tileheight), {});
+                new Tile(this.game, new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight), new Vector(this.mapData.tilewidth, this.mapData.tileheight), {isSolid: true}, images, this.mapData.layers[0].data[i]);
             }
         }
     }

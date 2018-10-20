@@ -66,7 +66,7 @@ class Player extends MovableObject
     }
     else if(e.keyCode == 74) // J
     {
-      
+
     }
   }
 
@@ -79,6 +79,10 @@ class Player extends MovableObject
     else if(e.keyCode == 65) // A
     {
       this.setVelocity(new Vector(0,this.velocity.y));
+    } else if (e.keyCode == 87 || e.keyCode == 83) { // W, S
+      if (this._onLadder) {
+        this.setVelocity(new Vector(this.velocity.x, 0));
+      }
     }
   }
 

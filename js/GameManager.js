@@ -32,10 +32,10 @@ class GameManager
     this.interval = setInterval(()=>spawnEnemy(), 1000);
   }
 
-  spawnEnemys()
+  spawnEnemy()
   {
     this.amountSpawned++;
-    
+
     if(this.amountSpawned == this.amountToSpawn)
     {
       clearInterval(this.interval);

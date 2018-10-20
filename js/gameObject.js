@@ -22,15 +22,23 @@ class GameObject{
 
   }
 
-  overlaps(otherGameObject){
+  overlaps(otherGameObject, newPos){
+    let pos = otherGameObject.position;
+    if (typeof newPos === "object") {
+      pos = newPos;
+    }
     const isOverlapping = isRectangleOverlapping(this.position, this.position.add(this.size),
-    otherGameObject.position, otherGameObject.position.add(otherGameObject.size));
+    pos, pos.add(otherGameObject.size));
     return isOverlapping;
   }
 
   overlapsPosition(position){
-    const isOverlapping = isPointInsideRectangle(position, this.position, this.position.add(this.size));
+    const isOverlapping = isRectangleOverlapping(position, position, this.position, this.position.add(this.size));
     return isOverlapping;
+  }
+
+  hasTag(tag){
+    return this.tags.indexOf(tag) != -1
   }
 
   destroy(){

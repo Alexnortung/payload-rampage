@@ -33,11 +33,17 @@ class Enemy extends MovableObject{
     //check if they should turn around
     //get new pos
     const nextPos = this.position.add(new Vector(speedX, 0));
-    const gameObjs = this.game.gameObjs;
+    // console.log(nextPos, this.position);
+    // console.log(nextPos, this.position);
+    const gameObjs = this.game.gameObjects;
     for (var i = 0; i < gameObjs.length; i++) {
-      if (gameObjs[i].isSolid && this.canMoveThrough(gameObjs[i]) && gameObjs[i].overlapsPosition(nextPos)) {
+      if (gameObjs[i] === this)  continue;
+
+      // console.log(gameObjs[i].isSolid , this.canMoveThrough(gameObjs[i]) , gameObjs[i].overlapsPosition(nextPos));
+      if (gameObjs[i].isSolid && !this.canMoveThrough(gameObjs[i]) && gameObjs[i].overlaps(this, nextPos)) {
         //should turn
         this.turnAround();
+        // console.log("turning around", gameObjs[i]);
         break;
       }
     }

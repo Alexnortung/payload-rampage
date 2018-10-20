@@ -17,7 +17,7 @@ class GameManager
 
   getPortalPosition()
   {
-    return this.game.findGameObjectByTag('Portal'); 
+    return this.game.findGameObjectByTag('Portal');
   }
 
   checkRoundEnd()
@@ -48,7 +48,7 @@ class GameManager
   spawnEnemy()
   {
     this.amountSpawned++;
-  
+
     let options = {
       enemyId: 1,
       isSolid: true,
@@ -59,7 +59,7 @@ class GameManager
       damage: 1,
     };
 
-    new Enemy(this.game, this.portal.position, new Vector(32, 32), options);
+    new Enemy(this.game, new Vector(400,80), new Vector(32, 32), options);
 
     if(this.amountSpawned == this.amountToSpawn)
     {

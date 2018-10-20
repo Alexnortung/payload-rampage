@@ -158,7 +158,7 @@ class TowerDefenseGame {
 
         if(tag == searchTag)
         {
-          console.log(elem);
+          // console.log(elem);
           return elem;
         }
 

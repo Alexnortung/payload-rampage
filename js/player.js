@@ -18,7 +18,13 @@ class Player extends MovableObject
   }
 
 
+  canMoveThrough(gameObject){
+    if (gameObject.hasTag("enemy")) {
+      return true;
+    }
 
+    return false;
+  }
 
 
   drawPlayer()

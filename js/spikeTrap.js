@@ -7,14 +7,27 @@ class SpikeTrap extends Trap {
     }
 
     super(game, position, SpikeTrap._size, options);
+    this.inRangeTriggers.push(new AttachedTrigger(game, this));
 
-    new AttachedTrigger(game, this)
   }
 
   attack(){
+    const enemies = this.getEnemiesInRange();
+    enemies.forEach(enemy => {
+      enemy.dealDamage(this.damage);
+    });
 
 
     Trap.prototype.attack.call(this);
+  }
+
+
+
+  update(){
+    if (this.getEnemiesInRange().length >= 1 && this.canAttack()) {
+      this.attack();
+    }
+
   }
 
   static get _size() {

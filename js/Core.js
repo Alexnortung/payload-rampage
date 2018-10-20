@@ -5,6 +5,7 @@ class CoreCrystal extends GameObject
         super(game, position, size, options);
         this.Tiles = [firstTile];
         this.health = 100;
+        // this.isOneway = true;
 
         let trigger = new AttachedTrigger(game, this, {});
 

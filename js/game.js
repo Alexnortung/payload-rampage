@@ -289,7 +289,7 @@ class TowerDefenseGame {
           const collisionObj = {};
           collisionObj.elem = elem;
 
-          if (isRectangleOverlapping(newPosX, newPosX.add(movableObject.size), elem.position, elem.position.add(elem.size))) {
+          if (isRectangleOverlapping(!elem.isOneway && newPosX, newPosX.add(movableObject.size), elem.position, elem.position.add(elem.size))) {
             //collision in x direction
             collisionObj.x = true;
           } else {
@@ -298,11 +298,12 @@ class TowerDefenseGame {
           if (isRectangleOverlapping(newPosY, newPosY.add(movableObject.size), elem.position, elem.position.add(elem.size))) {
             //collision in y direction
             //movableObject is above the elem
-            if (!elem.isOneway || (elem.isOneway && positiveY && (movableObject.position.y + movableObject.sizey > elem.position.y))) {
+            if (!elem.isOneway || (elem.isOneway && !positiveY && (movableObject.position.y + movableObject.size.y > elem.position.y))) {
+              // console.log("isgrounded");
               movableObject.isGrounded = true;
               collisionObj.y = true;
 
-            }else if (elem.isOneway && !positiveY) {
+            }else if (elem.isOneway && positiveY) {
               collisionObj.y = false;
               movableObject.isGrounded = false;
             }
@@ -339,7 +340,7 @@ class TowerDefenseGame {
 
     });
     if (movableObject.tags.indexOf("player") != -1) {
-      //console.log(collisions);
+      console.log(collisions);
     }
     return collisions;
   }

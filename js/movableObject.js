@@ -97,6 +97,18 @@ class MovableObject extends GameObject
 
     }
 
+    dealDamage(damage){
+      this.health -= damage;
+      if (this.health <= 0) {
+        this.onBelowZeroHealth();
+      }
+
+    }
+
+    onBelowZeroHealth(){
+
+    }
+
     isStuck(){
       const overlaps = game.findOverlaps(this);
       for (let i = 0; i < overlaps.length; i++) {

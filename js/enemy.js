@@ -23,7 +23,7 @@ class Enemy extends MovableObject{
 
   }
 
-  
+
 
   update() {
     //setvelocity

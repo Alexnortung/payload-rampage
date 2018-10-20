@@ -12,6 +12,8 @@ class Trap extends GameObject {
       this.defaultCost = 100;
     }
 
+    this.inRangeTriggers = []
+
   }
 
   update() {
@@ -20,6 +22,21 @@ class Trap extends GameObject {
 
   draw() {
 
+  }
+
+  getEnemiesInRange() {
+    const enemies = [];
+    for (var i = 0; i < this.inRangeTriggers.length; i++) {
+      const rangeTrigger = this.inRangeTriggers[i];
+      for (var i = 0; i < rangeTrigger.gameObjectsInside.length; i++) {
+        const enemy = rangeTrigger.gameObjectsInside[i];
+        if (rangeTrigger.gameObjectsInside[i].hasTag("enemy") && enemies.indexOf(enemy) != -1) {
+          enemies.push(enemy);
+        }
+
+      }
+    }
+    return enemies;
   }
 
   canAttack() {

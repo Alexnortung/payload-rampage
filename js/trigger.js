@@ -2,8 +2,10 @@ class Trigger extends GameObject {
   constructor(game, position,size, options) {
     super(game, position,size, options);
     if (options === "object") {
-      typeof hasGravity === "boolean" ? this.hasGravity = options.hasGravity : this.hasGravity = false;
-
+      typeof options.hasGravity === "boolean" ? this.hasGravity = options.hasGravity : this.hasGravity = false;
+      typeof options.onEnter === "function" ? this.onEnter = options.onEnter : undefined;
+      typeof options.whileInside === "function" ? this.whileInside = options.whileInside : undefined;
+      typeof options.onLeave === "function" ? this.onLeave = options.onLeave : undefined;
     } else {
       this.hasGravity = false;
     }

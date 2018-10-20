@@ -1,4 +1,4 @@
-class trigger extends GmaeObject {
+class Trigger extends GameObject {
   constructor(game, position,size, options) {
     super(game, position,size, options);
     if (options === "object") {

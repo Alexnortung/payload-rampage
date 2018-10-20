@@ -66,7 +66,7 @@ class TowerDefenseGame {
 
     this.mapbuilder = new MapBuilding(this, 2, images);
 
-    this.player = new Player(this, new Vector(50, 415), new Vector(20, 32),{tags:["player"], health: 100});
+    this.player = new Player(this, new Vector(50, 315), new Vector(20, 32),{tags:["player"], health: 100});
     this.gravity = new Vector(0,0.2);
 
     this.mapbuilder.createMap();
@@ -195,7 +195,7 @@ class TowerDefenseGame {
 
     });
     if (movableObject.tags.indexOf("player") != -1) {
-      console.log(collisions);
+      // console.log(collisions);
     }
     return collisions;
   }

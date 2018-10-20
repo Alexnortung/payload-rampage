@@ -200,6 +200,21 @@ class TowerDefenseGame {
     return false;
   }
 
+  findOverlaps(gameObject){
+    const overlaps = [];
+    this.gameObjects.forEach((otherGameObject) => {
+      if (otherGameObject === gameObject) {
+        return;
+      }
+      if (gameObject.overlaps(otherGameObject)) {
+        overlaps.push(otherGameObject);
+      }
+
+
+    });
+    return overlaps;
+  }
+
   checkLadder(movableObject){
     const allLadders = this.findGameObjectsByTag("ladder");
     const overlappingLadders = [];

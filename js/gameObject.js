@@ -38,7 +38,8 @@ class GameObject{
   }
 
   hasTag(tag){
-    return this.tags.indexOf(tag) != -1
+    const tagsToLower = this.tags.map(tagInArr => tagInArr.toLowerCase())
+    return tagsToLower.indexOf(tag.toLowerCase()) != -1
   }
 
   destroy(){

@@ -104,6 +104,7 @@ class TowerDefenseGame {
           }
           if (isRectangleOverlapping(newPosY, newPosY.add(movableObject.size), elem.position, elem.position.add(elem.size))) {
             //collision in y direction
+            movableObject.isGrounded = true;
             collisionObj.y = true;
           } else {
             collisionObj.y = false;

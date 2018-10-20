@@ -2,6 +2,9 @@ class Player extends MovableObject
 {
   constructor(game, position, size, options)
   {
+    if (typeof options === "object") {
+      typeof options.isSolid === "boolean" ? this.isSolid = options.isSolid : options.isSolid = true;
+    }
     super(game, position, size, options);
 
     this.weapon = new Weapon(this.game, this.position, new Vector(1, 1), 0.2, {}, "shotgun");

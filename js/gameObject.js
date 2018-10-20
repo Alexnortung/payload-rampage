@@ -2,7 +2,7 @@ class GameObject{
   constructor(game, position, size, options){
     this.position = position;
     this.size = size;
-    this.id = game.getNewId();
+    this.gameObjectId = game.getNewId();
 
     this.game = game;
     game.gameObjects.push(this);
@@ -43,7 +43,7 @@ class GameObject{
     {
       fill(255, 255, 255, 0);
       stroke(255, 0, 0);
-      
+
       rect(this.position.x, this.position.y, this.size.x, this.size.y);
     }
   }

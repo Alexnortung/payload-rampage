@@ -6,14 +6,16 @@ function preload()
 
   const player_img = loadImage("assets/sprites/Player1-v1.png");
 
-  var dirt_img = loadImage("assets/tiles/dirt.png"); // 7
-  var stone_img_1 = loadImage("assets/tiles/stone_1.png"); // 3
-  var stone_img_2 = loadImage("assets/tiles/stone_2.png"); // 4
-  var stone_img_3 = loadImage("assets/tiles/stone_3.png"); // 5
-  var earth_bone_img = loadImage("assets/tiles/bone.png") // 6
-  var grass_img = loadImage("assets/tiles/grass.png"); // 11
-  var earth_tile_half_buttom_img = loadImage("assets/tiles/earth-tile-half-buttom.png"); // 8
-  var earth_gem_img = loadImage("assets/tiles/earth_gem.png")// 10
+  var stone_img_1 = loadImage("assets/tiles/foreground/stone_1.png"); // 3
+  var stone_img_2 = loadImage("assets/tiles/foreground/stone_2.png"); // 4
+  var stone_img_3 = loadImage("assets/tiles/foreground/stone_3.png"); // 5
+
+  var earth_bone_img = loadImage("assets/tiles/foreground/bone.png") // 6
+  var dirt_img = loadImage("assets/tiles/foreground/dirt.png"); // 7
+  var earth_tile_half_buttom_img = loadImage("assets/tiles/foreground/earth-tile-half-buttom.png"); // 8
+
+  var grass_img = loadImage("assets/tiles/foreground/grass.png"); // 11
+  var earth_gem_img = loadImage("assets/tiles/foreground/earth_gem.png")// 10
 
   var crystal_top_left = loadImage("assets/objects/BaseGem/BaseGem_top_left.png"); // 18
   var crystal_top_right = loadImage("assets/objects/BaseGem/BaseGem_top_right.png"); // 19
@@ -64,7 +66,7 @@ class TowerDefenseGame {
     this.gold = 100;
     this.gameObjects = [];
 
-    this.mapbuilder = new MapBuilding(this, 2, images);
+    this.mapbuilder = new MapBuilding(this, 1, images);
 
     this.player = new Player(this, new Vector(50, 315), new Vector(20, 32),{tags:["player"], health: 100});
     this.gravity = new Vector(0,0.2);
@@ -106,12 +108,15 @@ class TowerDefenseGame {
 
         if(tag == searchTag)
         {
+          console.log(elem);
           return elem;
         }
 
       }
 
     }
+
+    return null;
   }
 
   checkCollisions(movableObject){

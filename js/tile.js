@@ -19,6 +19,7 @@ class Tile extends GameObject
         }
         else
         {
+            fill(0);
             rect(this.position.x, this.position.y, this.size.x, this.size.y);
         }
     }
@@ -29,52 +30,50 @@ class Tile extends GameObject
         {
             case 3:
                 return images.stone_1;
-                break;
         
             case 4:
                 return images.stone_2;
-                break;
             
             case 5:
                 return images.stone_3;
 
-            case 6:
+            case 11:
                 return images.bone;
 
-            case 7:
+            case 12:
                 return images.dirt;
 
-            case 8:
+            case 13:
                 return images.half_buttom;
                 
-            case 10:
+            case 15:
                 return images.gem;
             
-            case 11:
+            case 21:
                 return images.grass;
 
-            case 16:
+            case 31:
                 return images.portal_top_left;
             
-            case 17:
+            case 32:
                 return images.portal_top_right;
 
-            case 18:
+            case 33:
                 return images.crystal_top_left;
             
-            case 19:
+            case 34:
                 return images.crystal_top_right;
 
-            case 21:
+            case 41:
                 return images.portal_bot_left;
 
-            case 22:
+            case 42:
                 return images.portal_bot_right;
 
-            case 23:
+            case 43:
                 return images.crystal_bot_left;
             
-            case 24:
+            case 44:
                 return images.crystal_bot_right;
 
             default:

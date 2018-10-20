@@ -11,7 +11,9 @@ class ShotgunBullet extends Projectile {
   }
 
   onCollide(gameObject){
-    if (gameObject.isSolid) {
+    
+    if (gameObject.isSolid && gameObject.tags.indexOf('player') == -1)
+    {
       this.destroy();
     }
   }

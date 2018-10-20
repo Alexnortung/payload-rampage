@@ -20,7 +20,7 @@ class Projectile extends MovableObject{
 
   draw()
   {
-    fill(0);
+    fill(255);
     rect(this.position.x, this.position.y, this.size.x, this.size.y);
   }
 }

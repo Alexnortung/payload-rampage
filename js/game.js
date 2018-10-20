@@ -30,7 +30,7 @@ class TowerDefenseGame {
     this.mapbuilder = new MapBuilding(this, images);
 
     this.player = new Player(this, new Vector(50, 415), new Vector(20, 32),{tags:["player"], health: 100});
-    this.gravity = new Vector(0,0.02);
+    this.gravity = new Vector(0,0.2);
 
     this.mapbuilder.createMap();
 
@@ -69,7 +69,7 @@ class TowerDefenseGame {
     const collisions = [];
     this.gameObjects.forEach((elem, i) => {
       // console.log(elem);
-      if (!elem.isSolid) {
+      if (!elem.isSolid || elem === movableObject) {
         return ;
       }
       //is elem inside movableObject's x
@@ -107,6 +107,7 @@ class TowerDefenseGame {
             movableObject.isGrounded = true;
             collisionObj.y = true;
           } else {
+            movableObject.isGrounded = false;
             collisionObj.y = false;
           }
 
@@ -118,10 +119,10 @@ class TowerDefenseGame {
             // collisionObj.y = true;
           }
 
-          collisionObj.newPos = newPos;
-          collisionObj.newPosY = newPosY;
-          collisionObj.newPosX = newPosX;
-          collisionObj.movableObject = movableObject;
+          // collisionObj.newPos = newPos;
+          // collisionObj.newPosY = newPosY;
+          // collisionObj.newPosX = newPosX;
+          // collisionObj.movableObject = movableObject;
 
 
 
@@ -138,7 +139,7 @@ class TowerDefenseGame {
 
     });
     if (movableObject.tags.indexOf("player") != -1) {
-      // console.log(collisions);
+      console.log(collisions);
     }
     return collisions;
   }

@@ -30,6 +30,9 @@ class MovableObject extends GameObject
 
       //check collisions
       const collisions = this.game.checkCollisions(this);
+      if(collisions.length == 0){
+        this.isGrounded = false;
+      }
       for (var i = 0; i < collisions.length; i++) {
         //set velocity
         if (this.isSolid) {

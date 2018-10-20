@@ -28,12 +28,12 @@ class Player extends MovableObject
     if(e.keyCode == 68) // D
     {
       this.isFacingRight = true;
-      this.setVelocity(new Vector(3, 0));
+      this.setVelocity(new Vector(3, this.velocity.y));
     }
     else if (e.keyCode == 65) // A
     {
       this.isFacingRight = false;
-      this.setVelocity(new Vector(-3, 0));
+      this.setVelocity(new Vector(-3, this.velocity.y));
     }
     else if(e.keyCode == 32) // Space
     {
@@ -49,11 +49,11 @@ class Player extends MovableObject
     console.log("release: " + e.keyCode);
     if(e.keyCode == 68) // D
     {
-      this.setVelocity(new Vector(0, 0));
+      this.setVelocity(new Vector(0, this.velocity.y));
     }
     else if(e.keyCode == 65) // A
     {
-      this.setVelocity(new Vector(0,0));
+      this.setVelocity(new Vector(0,this.velocity.y));
     }
   }
 

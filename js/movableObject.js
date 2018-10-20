@@ -31,12 +31,26 @@ class MovableObject extends GameObject
       //check collisions
       const collisions = this.game.checkCollisions(this);
       for (var i = 0; i < collisions.length; i++) {
-        if (collisions[i].x) {
-          this.velocity.x = 0;
+        //set velocity
+        if (this.isSolid) {
+          if (collisions[i].x) {
+            this.velocity.x = 0;
+          }
+          if (collisions[i].y) {
+            this.velocity.y = 0;
+          }
+
         }
-        if (collisions[i].y) {
-          this.velocity.y = 0;
+
+        //call oncollide
+        if (typeof collisions[i].elem.onCollide === "function") {
+          collisions[i].elem.onCollide(this);
         }
+        if (typeof this.onCollide === "function") {
+          this.onCollide(elem);
+        }
+
+
       }
 
 

@@ -33,7 +33,7 @@ class Weapon extends GameObject
             case 'standard':
                 this.standardShotInstanceiate(pos, dir);
                 break;
-            
+
             case 'shotgun':
                 this.shotgunShotInstanciate(pos, dir);
                 break;
@@ -42,7 +42,7 @@ class Weapon extends GameObject
 
     standardShotInstanceiate(pos, dir)
     {
-        new Projectile(this.game, pos, new Vector(2, 2), dir, 2);
+        new Projectile(this.game, pos, new Vector(2, 2), {}, dir, 2);
     }
 
     shotgunShotInstanciate(pos, dir)
@@ -51,9 +51,9 @@ class Weapon extends GameObject
         let dirStraight = new Vector(dir.x, dir.y + random(-0.5, 0.5));
         let dirDown = new Vector(dir.x, dir.y + random(-0.5,0.5));
 
-        new Projectile(this.game, pos, new Vector(2, 2), dirStraight, 1);
-        new Projectile(this.game, pos, new Vector(2, 2), dirUp, 1);
-        new Projectile(this.game, pos, new Vector(2, 2), dirDown, 1);
+        new Projectile(this.game, pos, new Vector(2, 2), {}, dirStraight, 1);
+        new Projectile(this.game, pos, new Vector(2, 2), {}, dirUp, 1);
+        new Projectile(this.game, pos, new Vector(2, 2), {}, dirDown, 1);
     }
 
 }

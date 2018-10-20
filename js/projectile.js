@@ -1,16 +1,16 @@
 class Projectile extends MovableObject{
-  constructor(game, position, size, velocity, damage){
+  constructor(game, position, size, options, velocity, damage){
     if (typeof options === "object") {
-      if (typeof options.hasGrivity == "boolean") {
-        this.hasGrivity = options.hasGrivity;
-
-      }else {
-        this.hasGrivity = false;
-        options.hasGrivity = this.hasGrivity;
-
+      typeof options.hasGrivity !== "boolean" ? options.hasGrivity = false : options.hasGrivity = options.hasGrivity;
+    }else {
+      options = {
+        hasGrivity: true,
+        tags: ['projectile']
       }
+
     }
-    super(game, position, size, {tag: ['projectile']});
+
+    super(game, position, size, options);
 
     this.velocity = velocity;
     this.damage = damage;

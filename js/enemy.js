@@ -61,6 +61,16 @@ class Enemy extends MovableObject{
     }
   }
 
+  onCollide(gameObject)
+  {
+    if(gameObject.hasTag("core"))
+    {
+      console.log("Collided");
+    }
+  }
+
+  
+
   draw()
   {
     push();

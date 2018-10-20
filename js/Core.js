@@ -15,7 +15,7 @@ class CoreCrystal extends GameObject
     onCollide(gameObject)
     {
         let tag_IsEnemy = false;
-
+        console.log("Collided");
         for (let i = 0; i < gameObject.tags.length; i++)
         {
             let tag = gameObject.tags[i];

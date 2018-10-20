@@ -29,7 +29,7 @@ class GameManager
         this.interval;
         this.round_begun = false;
         this.round++;
-        this.amountToSpawn = 10 * this.round;
+        this.amountToSpawn = 20 * this.round;
         this.amountSpawned = 0;
       }
     }

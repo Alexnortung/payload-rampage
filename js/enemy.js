@@ -21,6 +21,8 @@ class Enemy extends MovableObject{
 
   }
 
+  
+
   update() {
     //setvelocity
     //calculate speed
@@ -75,7 +77,7 @@ class Enemy extends MovableObject{
     }
   }
 
-  
+
 
   draw()
   {

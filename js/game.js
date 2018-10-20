@@ -1,5 +1,5 @@
 let game;
-var images = {}; 
+var images = {};
 var animation = {};
 
 function preload()
@@ -112,6 +112,7 @@ class TowerDefenseGame {
     this.gold = 100;
     this.gameObjects = [];
     this._newId = 0;
+    this.tick = 0;
 
     if (typeof debug != 'undefined')
     {
@@ -161,6 +162,7 @@ class TowerDefenseGame {
     }
 
     this.draw();
+    this.tick++;
   }
 
   draw()

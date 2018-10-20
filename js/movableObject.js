@@ -97,4 +97,15 @@ class MovableObject extends GameObject
 
     }
 
+    isStuck(){
+      const overlaps = game.findOverlaps(this);
+      for (let i = 0; i < overlaps.length; i++) {
+        if (overlaps[i].isSolid && !this.canMoveThrough(overlaps[i])) {
+          return true;
+        }
+
+      }
+      return false;
+    }
+
 }

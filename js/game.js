@@ -112,6 +112,7 @@ class TowerDefenseGame {
     this.gold = 100;
     this.gameObjects = [];
     this._newId = 0;
+    this.gameOver = false;
 
     if (typeof debug != 'undefined')
     {

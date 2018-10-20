@@ -4,16 +4,26 @@ class CoreCrystal extends GameObject
     {
         super(game, position, size, options);
         this.Tiles = [firstTile];
+        this.health = 100;
 
         let trigger = new AttachedTrigger(game, this, {});
 
-        trigger.onEnter = function (gameObject)
+        trigger.onEnter =  (gameObject) =>
         {
-            if(gameObject.hasTag("Enemey"))
+            if(gameObject.hasTag("enemy"))
             {
+                console.log("world");
                 gameObject.destroy();
-                this.game.health -= gameObject.damage;
+                this.health -= gameObject.damage;
             }
+        }
+    }
+
+    update()
+    {
+        if(this.health < 0)
+        {
+            this.game.gameOver = true;
         }
     }
 

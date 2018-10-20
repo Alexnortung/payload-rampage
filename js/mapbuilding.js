@@ -28,7 +28,7 @@ class MapBuilding
                             let size = new Vector(this.mapData.tilewidth, this.mapData.tileheight);
         
                             let firstTile = new Tile(this.game, position, size, {isSolid: false,}, images, id);
-                            let core = new CoreCrystal(this.game, position, new Vector(size.x * 2, size.y * 2), {isSolid:true,tags: ['Core']}, firstTile);
+                            let core = new CoreCrystal(this.game, position, new Vector(size.x * 2, size.y * 2), {isSolid:false,tags: ['Core']}, firstTile);
                             //console.log(core);
                         }
                         else if(id == 34 || id == 43 || id == 44)

@@ -21,6 +21,12 @@ class GameObject{
 
   }
 
+  overlaps(otherGameObject){
+    const isOverlapping = isRectangleOverlapping(this.position, this.position.add(this.size),
+    otherGameObject.position, otherGameObject.position.add(otherGameObject.size));
+    return isOverlapping;
+  }
+
 
 
 }

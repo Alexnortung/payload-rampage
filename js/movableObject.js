@@ -3,12 +3,14 @@ class MovableObject extends GameObject
     constructor(game, position,size, options)
     {
         super(game, position, size, options);
+        this._onLadder = false;
 
         this.velocity = new Vector(0,0);
         this.maxVelocity = Infinity;
         if (typeof options === "object") {
           typeof options.health === "number"? this.health = options.health: this.health = 100;
           typeof options.hasGrivity === "boolean"? this.hasGrivity = options.hasGrivity : this.hasGrivity = true;
+          typeof options.canHasGravity === "boolean" ? this.canHasGravity = options.canHasGravity : this.canHasGravity = true;
         }
 
         this.isGrounded = false;
@@ -18,6 +20,20 @@ class MovableObject extends GameObject
     setVelocity(velocity)
     {
         this.velocity = velocity;
+    }
+
+    enterLadder(){
+      this.hasGravity = false;
+      this._onLadder = true;
+    }
+
+    leaveLadder() {
+      if (this.canHasGravity) {
+        this.hasGravity = true;
+
+      }
+      this._onLadder = false;
+
     }
 
 
@@ -53,7 +69,14 @@ class MovableObject extends GameObject
           this.onCollide(elem);
         }
 
+      }
 
+      //check ladder
+      const ladders = game.checkLadder(this);
+      if (ladders.length >= 1 && !this._onLadder) {
+        this.enterLadder();
+      } else if (ladders.length == 0 && this._onLadder) {
+        this.leaveLadder();
       }
 
 

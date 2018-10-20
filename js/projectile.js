@@ -2,10 +2,12 @@ class Projectile extends MovableObject{
   constructor(game, position, size, options, velocity, damage){
     if (typeof options === "object") {
       typeof options.hasGrivity !== "boolean" ? options.hasGrivity = false : options.hasGrivity = options.hasGrivity;
+      typeof options.canHasGravity === "boolean" ? options.canHasGravity = options.canHasGravity : options.canHasGravity = false;
     }else {
       options = {
-        hasGrivity: true,
-        tags: ['projectile']
+        hasGrivity: false,
+        canHasGravity: false,
+        tags: ['projectile'],
       }
 
     }

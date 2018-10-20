@@ -119,6 +119,39 @@ class TowerDefenseGame {
     return null;
   }
 
+  findGameObjectsByTag(searchTag)
+  {
+    const gameObjects = [];
+    for (let i = 0; i < this.gameObjects.length; i++)
+    {
+      let elem = this.gameObjects[i];
+      for (let j = 0; j < elem.tags.length; j++)
+      {
+        let tag = elem.tags[j];
+
+        if(tag == searchTag)
+        {
+          gameObjects.push(elem);
+        }
+
+      }
+
+    }
+    return gameObjects;
+  }
+
+  checkLadder(movableObject){
+    const allLadders = this.findGameObjectsByTag("ladder");
+    const overlappingLadders = [];
+    allLadders.forEach((ladder, i) => {
+      if (movableObject.overlaps(ladder)) {
+        overlappingLadders.push(ladder);
+      }
+
+    });
+    return overlappingLadders;
+  }
+
   checkCollisions(movableObject){
     let newPos = movableObject.position.add(movableObject.velocity);
     const newPosX = movableObject.position.add(new Vector(movableObject.velocity.x, 0));
@@ -130,7 +163,7 @@ class TowerDefenseGame {
     const collisions = [];
     this.gameObjects.forEach((elem, i) => {
       // console.log(elem);
-      if (!elem.isSolid || elem === movableObject) {
+      if ((!elem.isSolid && !elem.isOneway) || elem === movableObject) {
         return ;
       }
       //is elem inside movableObject's x
@@ -165,8 +198,15 @@ class TowerDefenseGame {
           }
           if (isRectangleOverlapping(newPosY, newPosY.add(movableObject.size), elem.position, elem.position.add(elem.size))) {
             //collision in y direction
-            movableObject.isGrounded = true;
-            collisionObj.y = true;
+            //movableObject is above the elem
+            if (!elem.isOneway || (elem.isOneway && positiveY && (movableObject.position.y + movableObject.sizey > elem.position.y))) {
+              movableObject.isGrounded = true;
+              collisionObj.y = true;
+
+            }else if (elem.isOneway && !positiveY) {
+              collisionObj.y = false;
+              movableObject.isGrounded = false;
+            }
           } else {
             movableObject.isGrounded = false;
             collisionObj.y = false;

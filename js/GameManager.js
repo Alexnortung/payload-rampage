@@ -5,19 +5,19 @@ class GameManager
     this.game = game;
     this.round = 1;
     this.round_begun = false;
-    this.amountToSpawn = 10 * this.round;
+    this.amountToSpawn = 1;
     this.amountSpawned = 0;
 
     this.enemiess = [];
 
-    //this.portal = this.getPortalPosition();
+    this.portal = this.getPortalPosition();
 
     window.addEventListener('keydown',(e)=>this.beginRound(e),false);
   }
 
   getPortalPosition()
   {
-    //return this.game.findGameObjectByTag('Portal'); 
+    return this.game.findGameObjectByTag('Portal'); 
   }
 
   checkRoundEnd()
@@ -50,7 +50,7 @@ class GameManager
     this.amountSpawned++;
   
     let options = {
-      enemy_id: 1,
+      enemyId: 1,
       isSolid: true,
       health: 1000,
       tags: ['enemy'],

@@ -24,8 +24,8 @@ class Enemy extends MovableObject{
   update() {
     //setvelocity
     //calculate speed
-    const speedX = this.isFaceingRight ? defaultSpeed : -defaultSpeed;
-    this.setvelocity(new Vector(speedX, this.velocity.y));
+    const speedX = this.isFaceingRight ? this.defaultSpeed : -this.defaultSpeed;
+    this.setVelocity(new Vector(speedX, this.velocity.y));
 
 
 
@@ -46,7 +46,8 @@ class Enemy extends MovableObject{
 
   }
 
-  canMoveThrough(gameObject){
+  canMoveThrough(gameObject)
+  {
     if (gameObject.tags.indexOf("player") != -1) {
       return true;
     }else {

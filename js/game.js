@@ -108,7 +108,7 @@ class TowerDefenseGame {
 
     this.mapbuilder.createMap();
 
-    this.gm = new GameManager();
+    this.gm = new GameManager(this);
 
     setInterval(()=>this.update(), 16);
   }
@@ -300,7 +300,7 @@ class TowerDefenseGame {
 
     });
     if (movableObject.tags.indexOf("player") != -1) {
-      console.log(collisions);
+      //console.log(collisions);
     }
     return collisions;
   }

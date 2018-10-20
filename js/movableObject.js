@@ -55,7 +55,7 @@ class MovableObject extends GameObject
       }
       for (var i = 0; i < collisions.length; i++) {
         //set velocity
-        if (this.isSolid && !this.canMoveThrough) {
+        if (this.isSolid && !this.canMoveThrough()  ) {
           if (collisions[i].x) {
             this.velocity.x = 0;
           }

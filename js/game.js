@@ -300,7 +300,7 @@ class TowerDefenseGame {
 
     });
     if (movableObject.tags.indexOf("player") != -1) {
-      // console.log(collisions);
+      console.log(collisions);
     }
     return collisions;
   }

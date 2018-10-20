@@ -48,7 +48,7 @@ class GameManager
   spawnEnemy()
   {
     this.amountSpawned++;
-    
+  
     /*let options = {
       enemy_id: 1,
       isSolid: true,

@@ -9,7 +9,7 @@ class MovableObject extends GameObject
         this.maxVelocity = Infinity;
         if (typeof options === "object") {
           typeof options.health === "number"? this.health = options.health: this.health = 100;
-          typeof options.hasGrivity === "boolean"? this.hasGrivity = options.hasGrivity : this.hasGrivity = true;
+          typeof options.hasGravity === "boolean"? this.hasGravity = options.hasGravity : this.hasGravity = true;
           typeof options.canHasGravity === "boolean" ? this.canHasGravity = options.canHasGravity : this.canHasGravity = true;
         }
 
@@ -39,7 +39,7 @@ class MovableObject extends GameObject
 
     update(){
       //add gravity to velocity
-      if (this.hasGrivity) {
+      if (this.hasGravity) {
         this.velocity.addTo(game.gravity);
 
       }
@@ -73,10 +73,13 @@ class MovableObject extends GameObject
 
       //check ladder
       const ladders = game.checkLadder(this);
+      // console.log(ladders);
       if (ladders.length >= 1 && !this._onLadder) {
         this.enterLadder();
+        console.log("entered ladders");
       } else if (ladders.length == 0 && this._onLadder) {
         this.leaveLadder();
+        console.log("left ladders");
       }
 
 

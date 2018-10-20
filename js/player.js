@@ -7,6 +7,7 @@ class Player extends MovableObject
     }
     super(game, position, size, options);
 
+
     this.weapon = new Weapon(this.game, this.position, new Vector(1, 1), 0.2, {}, "shotgun");
 
     this.isFacingRight = true;
@@ -15,6 +16,10 @@ class Player extends MovableObject
     window.addEventListener('keyup',(e)=>this.setDirectionRelease(e),false);
     window.addEventListener('click', (e)=>this.Fire1(e), false);
   }
+
+
+
+
 
   drawPlayer()
   {
@@ -39,6 +44,14 @@ class Player extends MovableObject
       if(this.isGrounded)
       {
         this.setVelocity(new Vector(this.velocity.x, -2));
+      }
+    } else if (e.keyCode == 87) { //W
+      if (this._onLadder) {
+        this.setVelocity(new Vector(this.velocity.x, -3));
+      }
+    } else if (e.keyCode == 83) { //S
+      if (this._onLadder) {
+        this.setVelocity(new Vector(this.velocity.x, -3));
       }
     }
   }

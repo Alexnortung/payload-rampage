@@ -2,6 +2,7 @@ class GameObject{
   constructor(game, position, size, options){
     this.position = position;
     this.size = size;
+    this.id = game.getNewId();
 
     this.game = game;
     game.gameObjects.push(this);
@@ -25,6 +26,10 @@ class GameObject{
     const isOverlapping = isRectangleOverlapping(this.position, this.position.add(this.size),
     otherGameObject.position, otherGameObject.position.add(otherGameObject.size));
     return isOverlapping;
+  }
+
+  destroy(){
+
   }
 
 

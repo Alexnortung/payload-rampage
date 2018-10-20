@@ -63,6 +63,7 @@ class TowerDefenseGame {
   constructor(){
     this.gold = 100;
     this.gameObjects = [];
+    this._newId = 0;
 
     this.mapbuilder = new MapBuilding(this, 2, images);
 
@@ -72,6 +73,11 @@ class TowerDefenseGame {
     this.mapbuilder.createMap();
 
     setInterval(()=>this.update(), 16);
+  }
+
+  getGewId() {
+    this._newId++;
+    return this._newId;
   }
 
   update()
@@ -133,6 +139,16 @@ class TowerDefenseGame {
 
     }
     return gameObjects;
+  }
+
+  destroyGameObject(id){
+    for (var i = 0; i < this.gameObjects.length; i++) {
+      if (this.gameObjects[i].id === id) {
+        this.gameObjects.splice(i,1);
+        return true;
+      }
+    }
+    return false;
   }
 
   checkLadder(movableObject){

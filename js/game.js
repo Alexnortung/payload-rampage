@@ -83,14 +83,23 @@ function setup()
 {
   createCanvas(640, 640);
   background(52);
-  game = new TowerDefenseGame();
+  game = new TowerDefenseGame(true);
 }
 
 class TowerDefenseGame {
-  constructor(){
+  constructor(debug){
     this.gold = 100;
     this.gameObjects = [];
     this._newId = 0;
+
+    if (typeof debug != 'undefined')
+    {
+      this.debug = debug;
+    }
+    else
+    {
+      this.debug = false;
+    }
 
     this.mapbuilder = new MapBuilding(this, 1, images);
 
@@ -98,6 +107,8 @@ class TowerDefenseGame {
     this.gravity = new Vector(0,0.2);
 
     this.mapbuilder.createMap();
+
+    this.gm = new GameManager();
 
     setInterval(()=>this.update(), 16);
   }
@@ -117,6 +128,14 @@ class TowerDefenseGame {
       if(typeof this.gameObjects[i] !== "undefined" && typeof this.gameObjects[i].draw == 'function')
       {
         this.gameObjects[i].draw();
+      }
+    }
+
+    if(this.debug)
+    {
+      for (let i = 0; i < this.gameObjects.length; i++)
+      {
+        this.gameObjects[i].debug();
       }
     }
 

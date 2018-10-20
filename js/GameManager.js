@@ -1,20 +1,30 @@
 class GameManager
 {
-  constructor()
+  constructor(game)
   {
+    this.game = game;
     this.round = 1;
     this.round_begun = false;
     this.amountToSpawn = 10 * this.round;
     this.amountSpawned = 0;
 
-    this.enemys = [];
+    this.enemiess = [];
+
+    //this.portal = this.getPortalPosition();
+
+    window.addEventListener('keydown',(e)=>this.beginRound(e),false);
+  }
+
+  getPortalPosition()
+  {
+    //return this.game.findGameObjectByTag('Portal'); 
   }
 
   checkRoundEnd()
   {
     if(this.round_begun)
     {
-      if(this.enemys.length)
+      if(this.enemies.length)
       {
         this.interval;
         this.round_begun = false;
@@ -25,17 +35,32 @@ class GameManager
     }
   }
 
-  beginRound()
+  beginRound(e)
   {
-    this.round_begun = true;
+    if(e.keyCode == 71 && !this.round_begun)
+    {
+      this.round_begun = true;
 
-    this.interval = setInterval(()=>spawnEnemy(), 1000);
+      this.interval = setInterval(()=>this.spawnEnemy(), 1000);
+    }
   }
 
-  spawnEnemys()
+  spawnEnemy()
   {
     this.amountSpawned++;
     
+    /*let options = {
+      enemy_id: 1,
+      isSolid: true,
+      health: 1000,
+      tags: ['enemy'],
+      isFacingRight: true,
+      defaultSpeed: 2,
+      damage: 1,
+    };
+
+    new Enemy(this.game, this.portal.position, new Vector(32, 32), options);*/
+
     if(this.amountSpawned == this.amountToSpawn)
     {
       clearInterval(this.interval);

@@ -32,6 +32,17 @@ class GameObject{
     this.game.destroyGameObject(this.id);
   }
 
+  debug()
+  {
+    if(this.isSolid)
+    {
+      fill(255, 255, 255, 0);
+      stroke(255, 0, 0);
+      
+      rect(this.position.x, this.position.y, this.size.x, this.size.y);
+    }
+  }
+
 
 
 }

@@ -53,7 +53,7 @@ class Player extends MovableObject
     {
       if(this.isGrounded)
       {
-        this.setVelocity(new Vector(this.velocity.x, -2));
+        this.setVelocity(new Vector(this.velocity.x, -5));
       }
     } else if (e.keyCode == 87) { //W
       if (this._onLadder) {

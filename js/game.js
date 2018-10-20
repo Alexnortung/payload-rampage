@@ -44,8 +44,8 @@ function preload()
 
   var enemy_1_lvl_1 = loadImage("assets/objects/enemies/Monster.png");
 
-  /*var monsterWalk = loadAnimation( "assets/objects/enemies/monster-movement/Monster_movement.png",
-  "assets/objects/enemies/monster-movement/Monster_movement2.png",
+  //var monsterWalk = loadAnimation("assets/objects/enemies/monster-movement/Monster_movement.png");
+  /*"assets/objects/enemies/monster-movement/Monster_movement2.png",
   "assets/objects/enemies/monster-movement/Monster_movement3.png",
   "assets/objects/enemies/monster-movement/Monster_movement4.png",
   );*/

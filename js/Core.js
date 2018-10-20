@@ -4,6 +4,17 @@ class CoreCrystal extends GameObject
     {
         super(game, position, size, options);
         this.Tiles = [firstTile];
+
+        let trigger = new AttachedTrigger(game, this, {});
+
+        trigger.onEnter = function (gameObject)
+        {
+            if(gameObject.hasTag("Enemey"))
+            {
+                gameObject.destroy();
+                this.game.health -= gameObject.damage;
+            }
+        }
     }
 
     add(Tile)
@@ -15,7 +26,7 @@ class CoreCrystal extends GameObject
     onCollide(gameObject)
     {
         let tag_IsEnemy = false;
-
+        console.log("Collided");
         for (let i = 0; i < gameObject.tags.length; i++)
         {
             let tag = gameObject.tags[i];

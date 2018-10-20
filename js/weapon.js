@@ -47,13 +47,15 @@ class Weapon extends GameObject
 
     shotgunShotInstanciate(pos, dir)
     {
-        let dirUp = new Vector(dir.x * 10, dir.y + random(-0.5, 0.5));
-        let dirStraight = new Vector(dir.x * 10, dir.y + random(-0.5, 0.5));
-        let dirDown = new Vector(dir.x * 10, dir.y + random(-0.5,0.5));
+        let dirUp = new Vector(dir.x * 10, dir.y + random(-2, 0.1));
+        let dirStraight = new Vector(dir.x * 10, dir.y + random(-2, 0.1));
+        let dirDown = new Vector(dir.x * 10, dir.y + random(-2,0.1));
 
-        new ShotgunBullet(this.game, pos, new Vector(2, 2), {}, dirStraight, 1);
-        new ShotgunBullet(this.game, pos, new Vector(2, 2), {}, dirUp, 1);
-        new ShotgunBullet(this.game, pos, new Vector(2, 2), {}, dirDown, 1);
+        let options = {tags: ['bullet']};
+
+        new ShotgunBullet(this.game, pos, new Vector(2, 2), options, dirStraight, 1000);
+        new ShotgunBullet(this.game, pos, new Vector(2, 2), options, dirUp, 1000);
+        new ShotgunBullet(this.game, pos, new Vector(2, 2), options, dirDown, 1000);
     }
 
 }

@@ -5,7 +5,7 @@ class GameManager
     this.game = game;
     this.round = 1;
     this.round_begun = false;
-    this.amountToSpawn = 1;
+    this.amountToSpawn = this.round * 10;
     this.amountSpawned = 0;
 
     this.enemiess = [];

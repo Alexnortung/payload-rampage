@@ -33,9 +33,9 @@ class Enemy extends MovableObject{
     //check if they should turn around
     //get new pos
     const nextPos = this.position.add(new Vector(speedX, 0));
-    const enemyObjs = this.game.findGameObjectsByTag("enemy");
-    for (var i = 0; i < enemyObjs.length; i++) {
-      if (enemyObjs[i].overlapsPosition(nextPos)) {
+    const gameObjs = this.game.gameObjs;
+    for (var i = 0; i < gameObjs.length; i++) {
+      if (gameObjs[i].isSolid && this.canMoveThrough(gameObjs[i]) && gameObjs[i].overlapsPosition(nextPos)) {
         //should turn
         this.turnAround();
         break;

@@ -5,14 +5,13 @@ class MapBuilding
         this.mapId = mapId;
         this.game = game;
         this.mapData = this.getMap(this.mapId);
-        console.log(this.mapData);
+        //console.log(this.mapData);
     }
 
     createMap()
     {
         for(let j = 0; j < this.mapData.layers.length; j++)
         {
-            console.log("yass");
             for (let i = 0; i < this.mapData.layers[j].data.length; i++)
             {
                 let id = this.mapData.layers[j].data[i];
@@ -29,7 +28,7 @@ class MapBuilding
                             let size = new Vector(this.mapData.tilewidth, this.mapData.tileheight);
         
                             let firstTile = new Tile(this.game, position, size, {isSolid: false,}, images, id);
-                            let core = new CoreCrystal(this.game, position, size, {tags: ['Core']}, firstTile);
+                            let core = new CoreCrystal(this.game, position, new Vector(size.x * 2, size.y * 2), {isSolid:true,tags: ['Core']}, firstTile);
                             //console.log(core);
                         }
                         else if(id == 34 || id == 43 || id == 44)
@@ -49,14 +48,14 @@ class MapBuilding
                             let options = {isSolid: false};
 
                             let firstTile = new Tile(this.game, position, size, options, images, id);
-                            let core = new Portal(this.game, position, new Vector(size.x * 2, size.y * 2), {isSolid: false,tags: ['Portal']}, firstTile);
+                            let core = new Portal(this.game, position, new Vector(size.x * size.x, size.y * size.y), {isSolid: false,tags: ['Portal']}, firstTile);
                         }
                         else if(id == 32 || id == 41 || id == 42)
                         {
                             let options = {isSolid: false};
                             let tile = new Tile(this.game, new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight), new Vector(this.mapData.tilewidth, this.mapData.tileheight), options, images, id);
                             let core = this.game.findGameObjectByTag('Portal');
-                            console.log(core);
+                            //console.log(core);
                             if (core != null)
                             {
                                 core.add(tile);
@@ -144,7 +143,7 @@ class MapBuilding
                 "type":"map",
                 "version":1.2,
                 "width":20
-               }
+               };
                 break;
 
 

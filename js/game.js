@@ -1,5 +1,6 @@
 let game;
-var images = {};
+var images = {}; 
+var animation = {};
 
 function preload()
 {
@@ -16,6 +17,9 @@ function preload()
 
   var grass_img = loadImage("assets/tiles/foreground/grass.png"); // 11
   var earth_gem_img = loadImage("assets/tiles/foreground/earth_gem.png")// 10
+
+  var rib_img = loadImage("assets/tiles/foreground/rib-tile.png");
+  var skeleton_img = loadImage("assets/tiles/foreground/skeleton-tile.png");
 
   var crystal_top_left = loadImage("assets/objects/BaseGem/BaseGem_top_left.png"); // 18
   var crystal_top_right = loadImage("assets/objects/BaseGem/BaseGem_top_right.png"); // 19
@@ -38,6 +42,14 @@ function preload()
 
   var ladder = loadImage("assets/objects/ladder/Ladder.png");
 
+  var enemy_1_lvl_1 = loadImage("assets/objects/enemies/Monster.png");
+
+  /*var monsterWalk = loadAnimation( "assets/objects/enemies/monster-movement/Monster_movement.png",
+  "assets/objects/enemies/monster-movement/Monster_movement2.png",
+  "assets/objects/enemies/monster-movement/Monster_movement3.png",
+  "assets/objects/enemies/monster-movement/Monster_movement4.png",
+  );*/
+
   images =
   {
     dirt: dirt_img,
@@ -46,6 +58,9 @@ function preload()
     stone_3: stone_img_3,
     bone: earth_bone_img,
     grass: grass_img,
+
+    rib: rib_img,
+    skeleton: skeleton_img,
 
     player: player_img,
 
@@ -74,8 +89,14 @@ function preload()
 
     ladder: ladder,
 
-
+    enemy_1_lvl_1: enemy_1_lvl_1,
   };
+
+
+/*  animation =
+  {
+    monsterWalk: monsterWalk,
+  };*/
 }
 
 
@@ -158,7 +179,6 @@ class TowerDefenseGame {
 
         if(tag == searchTag)
         {
-          // console.log(elem);
           return elem;
         }
 

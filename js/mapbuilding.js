@@ -25,10 +25,27 @@ class MapBuilding
                     let core = new CoreCrystal(this.game, position, size, {tags: ['Core']}, firstTile);
                     //console.log(core);
                 }
-                if(id == 19 || id == 23 || id == 24)
+                else if(id == 19 || id == 23 || id == 24)
                 {
                     let tile = new Tile(this.game, new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight), new Vector(this.mapData.tilewidth, this.mapData.tileheight), {isSolid: false}, images, id);
                     let core = this.game.findGameObjectByTag('Core');
+                    if (typeof core.add == 'function')
+                    {
+                        core.add(tile);
+                    }
+                }
+                else if(id == 16)
+                {
+                    let position = new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight);
+                    let size = new Vector(this.mapData.tilewidth, this.mapData.tileheight);
+
+                    let firstTile = new Tile(this.game, position, size, {}, images, id);
+                    let core = new Portal(this.game, position, size, {tags: ['Portal']}, firstTile);
+                }
+                else if(id == 17 || id == 21 || id == 22)
+                {
+                    let tile = new Tile(this.game, new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight), new Vector(this.mapData.tilewidth, this.mapData.tileheight), {isSolid: false}, images, id);
+                    let core = this.game.findGameObjectByTag('Portal');
                     if (typeof core.add == 'function')
                     {
                         core.add(tile);

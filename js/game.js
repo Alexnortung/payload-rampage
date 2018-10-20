@@ -3,14 +3,16 @@ var images = {};
 
 function preload()
 {
-  var dirt_img = loadImage("assets/dirt.png");
-  var stone_img = loadImage("assets/stone.png");
-  var grass_img = loadImage("assets/grass.png");
+  const dirt_img = loadImage("assets/dirt.png");
+  const stone_img = loadImage("assets/stone.png");
+  const grass_img = loadImage("assets/grass.png");
+  const player_img = loadImage("assets/sprites/Player1-v1.png");
   images =
   {
     dirt: dirt_img,
     stone: stone_img,
     grass: grass_img,
+    player: player_img
   };
 }
 

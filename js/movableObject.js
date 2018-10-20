@@ -66,7 +66,7 @@ class MovableObject extends GameObject
           collisions[i].elem.onCollide(this);
         }
         if (typeof this.onCollide === "function") {
-          this.onCollide(elem);
+          this.onCollide(collisions[i].elem);
         }
 
       }

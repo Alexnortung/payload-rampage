@@ -23,7 +23,17 @@ class Player extends MovableObject
 
   drawPlayer()
   {
-    image(images.player, this.position.x, this.position.y);
+    push();
+    translate(this.position.x, this.position.y);
+    let scaleVals = [1,1];
+    let scalePos = [0,0]
+    if (!this.isFacingRight) {
+      scaleVals = [-1,1];
+      scalePos = [-this.size.x,0];
+    }
+    scale(...scaleVals);
+    image(images.player, ...scalePos);
+    pop();
   }
 
   setDirectionPress(e)
@@ -51,7 +61,7 @@ class Player extends MovableObject
       }
     } else if (e.keyCode == 83) { //S
       if (this._onLadder) {
-        this.setVelocity(new Vector(this.velocity.x, -3));
+        this.setVelocity(new Vector(this.velocity.x, 3));
       }
     }
   }

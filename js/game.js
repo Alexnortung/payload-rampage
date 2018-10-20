@@ -75,7 +75,7 @@ class TowerDefenseGame {
     setInterval(()=>this.update(), 16);
   }
 
-  getGewId() {
+  getNewId() {
     this._newId++;
     return this._newId;
   }
@@ -87,7 +87,7 @@ class TowerDefenseGame {
     {
       this.gameObjects[i].update();
 
-      if(typeof this.gameObjects[i].draw == 'function')
+      if(typeof this.gameObjects[i] !== "undefined" && typeof this.gameObjects[i].draw == 'function')
       {
         this.gameObjects[i].draw();
       }

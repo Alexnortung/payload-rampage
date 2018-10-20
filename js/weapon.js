@@ -51,9 +51,9 @@ class Weapon extends GameObject
         let dirStraight = new Vector(dir.x, dir.y + random(-0.5, 0.5));
         let dirDown = new Vector(dir.x, dir.y + random(-0.5,0.5));
 
-        new Projectile(this.game, pos, new Vector(2, 2), {}, dirStraight, 1);
-        new Projectile(this.game, pos, new Vector(2, 2), {}, dirUp, 1);
-        new Projectile(this.game, pos, new Vector(2, 2), {}, dirDown, 1);
+        new ShotgunBullet(this.game, pos, new Vector(2, 2), {}, dirStraight, 1);
+        new ShotgunBullet(this.game, pos, new Vector(2, 2), {}, dirUp, 1);
+        new ShotgunBullet(this.game, pos, new Vector(2, 2), {}, dirDown, 1);
     }
 
 }

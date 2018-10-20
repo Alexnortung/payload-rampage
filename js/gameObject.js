@@ -29,7 +29,7 @@ class GameObject{
   }
 
   destroy(){
-
+    this.game.destroyGameObject(this.id);
   }
 
 

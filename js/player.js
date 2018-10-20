@@ -18,8 +18,7 @@ class Player extends MovableObject
 
   drawPlayer()
   {
-    fill(0);
-    rect(this.position.x, this.position.y, this.size.x, this.size.y);
+    image(images.player, this.position.x, this.position.y);
   }
 
   setDirectionPress(e)

@@ -6,14 +6,16 @@ function preload()
 
   const player_img = loadImage("assets/sprites/Player1-v1.png");
 
-  var dirt_img = loadImage("assets/tiles/dirt.png"); // 7
-  var stone_img_1 = loadImage("assets/tiles/stone_1.png"); // 3
-  var stone_img_2 = loadImage("assets/tiles/stone_2.png"); // 4
-  var stone_img_3 = loadImage("assets/tiles/stone_3.png"); // 5
-  var earth_bone_img = loadImage("assets/tiles/bone.png") // 6
-  var grass_img = loadImage("assets/tiles/grass.png"); // 11
-  var earth_tile_half_buttom_img = loadImage("assets/tiles/earth-tile-half-buttom.png"); // 8
-  var earth_gem_img = loadImage("assets/tiles/earth_gem.png")// 10
+  var stone_img_1 = loadImage("assets/tiles/foreground/stone_1.png"); // 3
+  var stone_img_2 = loadImage("assets/tiles/foreground/stone_2.png"); // 4
+  var stone_img_3 = loadImage("assets/tiles/foreground/stone_3.png"); // 5
+
+  var earth_bone_img = loadImage("assets/tiles/foreground/bone.png") // 6
+  var dirt_img = loadImage("assets/tiles/foreground/dirt.png"); // 7
+  var earth_tile_half_buttom_img = loadImage("assets/tiles/foreground/earth-tile-half-buttom.png"); // 8
+
+  var grass_img = loadImage("assets/tiles/foreground/grass.png"); // 11
+  var earth_gem_img = loadImage("assets/tiles/foreground/earth_gem.png")// 10
 
   var crystal_top_left = loadImage("assets/objects/BaseGem/BaseGem_top_left.png"); // 18
   var crystal_top_right = loadImage("assets/objects/BaseGem/BaseGem_top_right.png"); // 19
@@ -24,6 +26,17 @@ function preload()
   var portal_top_right = loadImage("assets/objects/Portal/Portal_top_right.png");
   var portal_bot_left = loadImage("assets/objects/Portal/Portal_bot_left.png");
   var portal_bot_right = loadImage("assets/objects/Portal/Portal_bot_right.png");
+
+  var bone_tile_bg = loadImage("assets/tiles/background/bone-tile-BG.png");
+  var earth_tile_bg = loadImage("assets/tiles/background/earth-tile-BG.png");
+  var gem_tile_bg = loadImage("assets/tiles/background/gem-tile-BG.png");
+  var rib_tile_bg = loadImage("assets/tiles/background/rib-tile-BG.png");
+  var skeleton_tile_bg = loadImage("assets/tiles/background/sleleton-tile-BG.png");
+  var stone_tile_1_bg = loadImage("assets/tiles/background/stone-tile-1-BG.png");
+  var stone_tile_2_bg = loadImage("assets/tiles/background/stone-tile-2-BG.png");
+  var stone_tile_3_bg = loadImage("assets/tiles/background/stone-tile-3-BG.png");
+
+  var ladder = loadImage("assets/objects/ladder/Ladder.png");
 
   images =
   {
@@ -48,6 +61,20 @@ function preload()
     portal_top_right: portal_top_right,
     portal_bot_left: portal_bot_left,
     portal_bot_right: portal_bot_right,
+
+    bg_stone_1: stone_tile_1_bg,
+    bg_stone_2: stone_tile_2_bg,
+    bg_stone_3: stone_tile_3_bg,
+
+    bg_bone: bone_tile_bg,
+    bg_earth: earth_tile_bg,
+    bg_gem: gem_tile_bg,
+    bg_rib: rib_tile_bg,
+    bg_skeleton: skeleton_tile_bg,
+
+    ladder: ladder,
+
+
   };
 }
 
@@ -65,7 +92,7 @@ class TowerDefenseGame {
     this.gameObjects = [];
     this._newId = 0;
 
-    this.mapbuilder = new MapBuilding(this, 2, images);
+    this.mapbuilder = new MapBuilding(this, 1, images);
 
     this.player = new Player(this, new Vector(50, 315), new Vector(20, 32),{tags:["player"], health: 100});
     this.gravity = new Vector(0,0.2);
@@ -112,12 +139,15 @@ class TowerDefenseGame {
 
         if(tag == searchTag)
         {
+          console.log(elem);
           return elem;
         }
 
       }
 
     }
+
+    return null;
   }
 
   findGameObjectsByTag(searchTag)

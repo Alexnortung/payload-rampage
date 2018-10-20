@@ -64,11 +64,14 @@ class Player extends MovableObject
         this.setVelocity(new Vector(this.velocity.x, 3));
       }
     }
+    else if(e.keyCode == 74) // J
+    {
+      
+    }
   }
 
   setDirectionRelease(e)
   {
-    console.log("release: " + e.keyCode);
     if(e.keyCode == 68) // D
     {
       this.setVelocity(new Vector(0, this.velocity.y));

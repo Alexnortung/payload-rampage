@@ -7,7 +7,8 @@ class MovableObject extends GameObject
         this.velocity = new Vector(0,0);
         this.maxVelocity = Infinity;
         if (typeof options === "object") {
-          typeof options.health? this.health = options.health: this.health = 100;
+          typeof options.health === "number"? this.health = options.health: this.health = 100;
+          typeof options.hasGrivity === "boolean"? this.hasGrivity = options.hasGrivity : this.hasGrivity = true;
         }
 
         this.isGrounded = false;
@@ -22,8 +23,36 @@ class MovableObject extends GameObject
 
     update(){
       //add gravity to velocity
-      this.velocity.addTo(game.gravity);
+      if (this.hasGrivity) {
+        this.velocity.addTo(game.gravity);
+
+      }
+
       //check collisions
+      const collisions = this.game.checkCollisions(this);
+      for (var i = 0; i < collisions.length; i++) {
+        //set velocity
+        if (this.isSolid) {
+          if (collisions[i].x) {
+            this.velocity.x = 0;
+          }
+          if (collisions[i].y) {
+            this.velocity.y = 0;
+          }
+
+        }
+
+        //call oncollide
+        if (typeof collisions[i].elem.onCollide === "function") {
+          collisions[i].elem.onCollide(this);
+        }
+        if (typeof this.onCollide === "function") {
+          this.onCollide(elem);
+        }
+
+
+      }
+
 
       //check max movement
 

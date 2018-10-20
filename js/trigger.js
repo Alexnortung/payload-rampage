@@ -8,6 +8,8 @@ class Trigger extends GameObject {
       this.hasGravity = false;
     }
 
+    this.gameObjectsInside = []
+
 
 
   }
@@ -30,14 +32,14 @@ class Trigger extends GameObject {
 
     const overlaps = this.game.findOverlaps(this);
 
-    overlaps.forEach(overlappingObjet => {
-      const index = this.gameObjectsInside.indexOf(overlappingObjet);
+    overlaps.forEach(overlappingObject => {
+      const index = this.gameObjectsInside.indexOf(overlappingObject);
       if (index == -1) {
         //call onEnter for this object
-        this.onEnter(overlappingObjet);
+        this.onEnter(overlappingObject);
       } else {
         // call while inside
-        this.whileInside(overlappingObjet);
+        this.whileInside(overlappingObject);
       }
     });
 

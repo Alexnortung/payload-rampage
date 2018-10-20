@@ -28,7 +28,7 @@ class MapBuilding
                             let position = new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight);
                             let size = new Vector(this.mapData.tilewidth, this.mapData.tileheight);
         
-                            let firstTile = new Tile(this.game, position, size, {}, images, id);
+                            let firstTile = new Tile(this.game, position, size, {isSolid: false,}, images, id);
                             let core = new CoreCrystal(this.game, position, size, {tags: ['Core']}, firstTile);
                             //console.log(core);
                         }

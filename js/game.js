@@ -3,14 +3,17 @@ var images = {};
 
 function preload()
 {
-  var dirt_img = loadImage("assets/dirt.png"); // 7
-  var stone_img_1 = loadImage("assets/stone_1.png"); // 3
-  var stone_img_2 = loadImage("assets/stone_2.png"); // 4
-  var stone_img_3 = loadImage("assets/stone_3.png"); // 5
-  var earth_bone_img = loadImage("assets/bone.png") // 6
-  var grass_img = loadImage("assets/grass.png"); // 11
-  var earth_tile_half_buttom_img = loadImage("assets/earth-tile-half-buttom.png"); // 8
-  var earth_gem_img = loadImage("assets/earth_gem.png")// 10
+
+  const player_img = loadImage("assets/sprites/Player1-v1.png");
+
+  var dirt_img = loadImage("assets/tiles/dirt.png"); // 7
+  var stone_img_1 = loadImage("assets/tiles/stone_1.png"); // 3
+  var stone_img_2 = loadImage("assets/tiles/stone_2.png"); // 4
+  var stone_img_3 = loadImage("assets/tiles/stone_3.png"); // 5
+  var earth_bone_img = loadImage("assets/tiles/bone.png") // 6
+  var grass_img = loadImage("assets/tiles/grass.png"); // 11
+  var earth_tile_half_buttom_img = loadImage("assets/tiles/earth-tile-half-buttom.png"); // 8
+  var earth_gem_img = loadImage("assets/tiles/earth_gem.png")// 10
 
   var crystal_top_left = loadImage("assets/objects/BaseGem/BaseGem_top_left.png"); // 18
   var crystal_top_right = loadImage("assets/objects/BaseGem/BaseGem_top_right.png"); // 19
@@ -30,6 +33,9 @@ function preload()
     stone_3: stone_img_3,
     bone: earth_bone_img,
     grass: grass_img,
+
+    player: player_img,
+
     half_buttom: earth_tile_half_buttom_img,
     gem: earth_gem_img,
 
@@ -60,8 +66,8 @@ class TowerDefenseGame {
 
     this.mapbuilder = new MapBuilding(this, 2, images);
 
-    this.player = new Player(this, new Vector(50, 415), new Vector(20, 32),{tags:["player"], health: 100});
-    this.gravity = new Vector(0,0.02);
+    this.player = new Player(this, new Vector(50, 315), new Vector(20, 32),{tags:["player"], health: 100});
+    this.gravity = new Vector(0,0.2);
 
     this.mapbuilder.createMap();
 
@@ -97,14 +103,14 @@ class TowerDefenseGame {
       for (let j = 0; j < elem.tags.length; j++)
       {
         let tag = elem.tags[j];
-        
+
         if(tag == searchTag)
         {
           return elem;
         }
-        
+
       }
-      
+
     }
   }
 
@@ -119,7 +125,7 @@ class TowerDefenseGame {
     const collisions = [];
     this.gameObjects.forEach((elem, i) => {
       // console.log(elem);
-      if (!elem.isSolid) {
+      if (!elem.isSolid || elem === movableObject) {
         return ;
       }
       //is elem inside movableObject's x
@@ -154,8 +160,10 @@ class TowerDefenseGame {
           }
           if (isRectangleOverlapping(newPosY, newPosY.add(movableObject.size), elem.position, elem.position.add(elem.size))) {
             //collision in y direction
+            movableObject.isGrounded = true;
             collisionObj.y = true;
           } else {
+            movableObject.isGrounded = false;
             collisionObj.y = false;
           }
 
@@ -167,10 +175,10 @@ class TowerDefenseGame {
             // collisionObj.y = true;
           }
 
-          collisionObj.newPos = newPos;
-          collisionObj.newPosY = newPosY;
-          collisionObj.newPosX = newPosX;
-          collisionObj.movableObject = movableObject;
+          // collisionObj.newPos = newPos;
+          // collisionObj.newPosY = newPosY;
+          // collisionObj.newPosX = newPosX;
+          // collisionObj.movableObject = movableObject;
 
 
 

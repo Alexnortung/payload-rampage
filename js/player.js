@@ -2,6 +2,9 @@ class Player extends MovableObject
 {
   constructor(game, position, size, options)
   {
+    if (typeof options === "object") {
+      typeof options.isSolid === "boolean" ? this.isSolid = options.isSolid : options.isSolid = true;
+    }
     super(game, position, size, options);
 
     this.weapon = new Weapon(this.game, this.position, new Vector(1, 1), 0.2, {}, "shotgun");
@@ -15,8 +18,7 @@ class Player extends MovableObject
 
   drawPlayer()
   {
-    fill(0);
-    rect(this.position.x, this.position.y, this.size.x, this.size.y);
+    image(images.player, this.position.x, this.position.y);
   }
 
   setDirectionPress(e)
@@ -25,12 +27,12 @@ class Player extends MovableObject
     if(e.keyCode == 68) // D
     {
       this.isFacingRight = true;
-      this.setVelocity(new Vector(3, 0));
+      this.setVelocity(new Vector(3, this.velocity.y));
     }
     else if (e.keyCode == 65) // A
     {
       this.isFacingRight = false;
-      this.setVelocity(new Vector(-3, 0));
+      this.setVelocity(new Vector(-3, this.velocity.y));
     }
     else if(e.keyCode == 32) // Space
     {
@@ -46,11 +48,11 @@ class Player extends MovableObject
     console.log("release: " + e.keyCode);
     if(e.keyCode == 68) // D
     {
-      this.setVelocity(new Vector(0, 0));
+      this.setVelocity(new Vector(0, this.velocity.y));
     }
     else if(e.keyCode == 65) // A
     {
-      this.setVelocity(new Vector(0,0));
+      this.setVelocity(new Vector(0,this.velocity.y));
     }
   }
 

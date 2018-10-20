@@ -3,7 +3,7 @@ class Enemy extends MovableObject{
     super(game, position, size, options);
 
     if (typeof options === "object") {
-      typeof options.isFaceingRight === "boolean" ? this.isFaceingRight = options.isFaceingRight: this.isFaceingRight = true;
+      typeof options.isFaceingRight === "boolean" ? this.isFaceingRight = options.isFaceingRight : this.isFaceingRight = true;
       typeof options.enemyId === "number" ? this.enemyId = options.enemyId: this.enemyId = 0;
       typeof options.defaultSpeed === "number" ? this.defaultSpeed = options.defaultSpeed : this.defaultSpeed = 2;
     } else {
@@ -48,13 +48,16 @@ class Enemy extends MovableObject{
       }
     }
 
-
-
+    if(this.health <= 0)
+    {
+      this.destroy();
+      this.game.gold += Math.floor(random(50, 200));
+    }
   }
 
   canMoveThrough(gameObject)
   {
-    if (gameObject.tags.indexOf("player") != -1) {
+    if (gameObject.tags.indexOf("player") != -1 || gameObject.hasTag("Core")) {
       return true;
     }else {
       return false;
@@ -63,9 +66,12 @@ class Enemy extends MovableObject{
 
   onCollide(gameObject)
   {
-    if(gameObject.hasTag("core"))
+    if(gameObject.hasTag('bullet'))
     {
-      console.log("Collided");
+      console.log(this.health);
+      this.health -= gameObject.damage;
+      gameObject.destroy();
+      //console.log(gameObject);
     }
   }
 

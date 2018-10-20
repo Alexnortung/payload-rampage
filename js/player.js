@@ -14,7 +14,7 @@ class Player extends MovableObject
 
     window.addEventListener('keydown',(e)=>this.setDirectionPress(e),false);
     window.addEventListener('keyup',(e)=>this.setDirectionRelease(e),false);
-    window.addEventListener('click', (e)=>this.Fire1(e), false);
+    //window.addEventListener('click', (e)=>this.Fire1(e), false);
   }
 
 
@@ -72,7 +72,7 @@ class Player extends MovableObject
     }
     else if(e.keyCode == 74) // J
     {
-
+      this.Fire1();
     }
   }
 
@@ -92,7 +92,7 @@ class Player extends MovableObject
     }
   }
 
-  Fire1(e)
+  Fire1()
   {
     if(typeof this.weapon != 'undefined' || this.weapon != null)
     {

@@ -42,7 +42,7 @@ class GameObject{
   }
 
   destroy(){
-    this.game.destroyGameObject(this.id);
+    return this.game.destroyGameObject(this.gameObjectId);
   }
 
   debug()

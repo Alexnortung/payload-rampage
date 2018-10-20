@@ -3,9 +3,9 @@ var images = {};
 
 function preload()
 {
-  const dirt_img = loadImage("assets/dirt.png");
-  const stone_img = loadImage("assets/stone.png");
-  const grass_img = loadImage("assets/grass.png");
+  const dirt_img = loadImage("assets/tiles/dirt.png");
+  const stone_img = loadImage("assets/tiles/stone.png");
+  const grass_img = loadImage("assets/tiles/grass.png");
   const player_img = loadImage("assets/sprites/Player1-v1.png");
   images =
   {

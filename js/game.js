@@ -30,7 +30,7 @@ class TowerDefenseGame {
     this.mapbuilder = new MapBuilding(this, images);
 
     this.player = new Player(this, new Vector(50, 415), new Vector(20, 32),{tags:["player"], health: 100});
-    this.gravity = new Vector(0,0.2);
+    this.gravity = new Vector(0,0.02);
 
     this.mapbuilder.createMap();
 
@@ -60,24 +60,41 @@ class TowerDefenseGame {
 
   checkCollisions(movableObject){
     let newPos = movableObject.position.add(movableObject.velocity);
-    const newPosX = movableObject.position.add(movableObject.velocity.x, 0);
-    const newPosY = movableObject.position.add(0, movableObject.velocity.y);
+    const newPosX = movableObject.position.add(new Vector(movableObject.velocity.x, 0));
+    const newPosY = movableObject.position.add(new Vector(0, movableObject.velocity.y));
     const checkX = (movableObject.velocity.x !== 0);
     const positiveX = (movableObject.velocity.x > 0);
     const checkY = (movableObject.velocity.y !== 0);
-    const positiveX = (movableObject.velocity.y > 0);
+    const positiveY = (movableObject.velocity.y > 0);
     const collisions = [];
     this.gameObjects.forEach((elem, i) => {
+      // console.log(elem);
+      if (!elem.isSolid) {
+        return ;
+      }
       //is elem inside movableObject's x
-      if (valueBetween(newPos.x, elem.position.x, elem.position.x + elem.size.x) || valueBetween(newPos.x + movableObject.size.x, elem.position.x, elem.position.x + elem.size.x ||
-      valueBetween(elem.x, newPos.position.x, newPos.position.x + newPos.size.x) || valueBetween(elem.x + movableObject.size.x, newPos.position.x, newPos.position.x + newPos.size.x) {
-        if (valueBetween(newPos.y, elem.position.y, elem.position.y + elem.size.y) || valueBetween(newPos.y + movableObject.size.y, elem.position.y, elem.position.y + elem.size.y ||
-        valueBetween(elem.y, newPos.position.y, newPos.position.y + newPos.size.y) || valueBetween(elem.y + movableObject.size.y, newPos.position.y, newPos.position.y + newPos.size.y) {
+      if (
+        valueBetween(newPos.x, elem.position.x, elem.position.x + elem.size.x) ||
+        valueBetween(newPos.x + movableObject.size.x, elem.position.x, elem.position.x + elem.size.x) ||
+        valueBetween(
+          elem.position.x,
+          newPos.x,
+          newPos.x +
+          movableObject.size.x) ||
+        valueBetween(elem.position.x + movableObject.size.x, newPos.x, newPos.x + movableObject.size.x)
+      ) {
+
+        if (
+          valueBetween(newPos.y, elem.position.y, elem.position.y + elem.size.y) ||
+          valueBetween(newPos.y + movableObject.size.y, elem.position.y, elem.position.y + elem.size.y) ||
+          valueBetween(elem.position.y, newPos.y, newPos.y + movableObject.size.y) ||
+          valueBetween(elem.position.y + movableObject.size.y, newPos.y, newPos.y + movableObject.size.y)
+        ) {
           //collision detected
           //which direction is the collision
           //is the blobk in the x direction
           const collisionObj = {};
-          collision.elem = elem;
+          collisionObj.elem = elem;
 
           if (isRectangleOverlapping(newPosX, newPosX.add(movableObject.size), elem.position, elem.position.add(elem.size))) {
             //collision in x direction
@@ -94,19 +111,34 @@ class TowerDefenseGame {
 
           //if both of the above is false it means it will hit in both directions
           if (!collisionObj.x && !collisionObj.y) {
-            collisionObj.x = true;
-            collisionObj.y = true;
+
+            // collisionObj.both = true;
+            // collisionObj.x = true;
+            // collisionObj.y = true;
           }
+
+          collisionObj.newPos = newPos;
+          collisionObj.newPosY = newPosY;
+          collisionObj.newPosX = newPosX;
+          collisionObj.movableObject = movableObject;
 
 
 
           collisions.push(collisionObj);
+          if (movableObject.tags.indexOf("player") != -1) {
+            // console.log(newPosX, newPosX.add(movableObject.size), elem.position, elem.position.add(elem.size)));
+            // console.log(isRectangleOverlapping(newPosX, newPosX.add(movableObject.size), elem.position, elem.position.add(elem.size)));
+
+          }
 
         }
       }
       //is elem inside movableObject's y
 
     });
+    if (movableObject.tags.indexOf("player") != -1) {
+      // console.log(collisions);
+    }
     return collisions;
   }
 

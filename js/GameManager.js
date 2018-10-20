@@ -12,6 +12,8 @@ class GameManager
 
     this.portal = this.getPortalPosition();
 
+    this.interval;
+
     window.addEventListener('keydown',(e)=>this.beginRound(e),false);
   }
 
@@ -24,12 +26,12 @@ class GameManager
   {
     if(this.round_begun)
     {
-      if(this.enemies.length)
+      if(this.amountSpawned == this.amountToSpawn)
       {
-        this.interval;
+        clearInterval(this.interval);
         this.round_begun = false;
         this.round++;
-        this.amountToSpawn = 20 * this.round;
+        this.amountToSpawn = 10 * this.round;
         this.amountSpawned = 0;
       }
     }
@@ -61,9 +63,6 @@ class GameManager
 
     new Enemy(this.game, new Vector(400,80), new Vector(32, 32), options);
 
-    if(this.amountSpawned == this.amountToSpawn)
-    {
-      clearInterval(this.interval);
-    }
+    this.checkRoundEnd();
   }
 }

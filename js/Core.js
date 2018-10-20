@@ -9,7 +9,7 @@ class CoreCrystal extends GameObject
     add(Tile)
     {
         this.Tiles.push(Tile);
-        console.log(this.Tiles);
+        //console.log(this.Tiles);
     }
 
     onCollide(gameObject)

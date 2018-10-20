@@ -24,6 +24,7 @@ class Tile extends GameObject
         }
         else
         {
+            console.log(this.imageId);
             fill(0);
             rect(this.position.x, this.position.y, this.size.x, this.size.y);
         }
@@ -33,6 +34,12 @@ class Tile extends GameObject
     {
         switch (this.imageId)
         {
+            case 1:
+                return images.rib;
+
+            case 2:
+                return images.skeleton;
+
             case 3:
                 return images.stone_1;
         
@@ -49,7 +56,7 @@ class Tile extends GameObject
                 return images.bg_bone;
 
             case 8:
-                return image.bg_gem;
+                return images.bg_gem;
 
             case 11:
                 return images.bone;
@@ -64,7 +71,7 @@ class Tile extends GameObject
                 return images.gem;
 
             case 16:
-                return images.stone_2;
+                return images.bg_stone_2;
 
             case 17:
                 return images.bg_earth;

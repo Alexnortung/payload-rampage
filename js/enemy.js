@@ -55,8 +55,21 @@ class Enemy extends MovableObject{
     }
   }
 
-  draw(){
+  draw()
+  {
+    push();
+    translate(this.position.x, this.position.y);
+    let scaleVals = [1,1];
+    let scalePos = [0,0]
+    if (!this.isFacingRight) {
+      scaleVals = [-1,1];
+      scalePos = [-this.size.x,0];
+    }
+    scale(...scaleVals);
 
+    //animation(images.monster_walk, ...scalePos);
+    //image(images.enemy_1_lvl_1, ...scalePos);
+    pop();
   }
 
 }

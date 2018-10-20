@@ -132,6 +132,9 @@ class TowerDefenseGame {
 
     this.mapbuilder.createMap();
 
+    new Life(this, new Vector(15, 15), new Vector(0, 0), {});
+    new Gold(this, new Vector(15, 30), new Vector(0, 0), {});
+
     this.gm = new GameManager(this);
 
     setInterval(()=>this.update(), 16);

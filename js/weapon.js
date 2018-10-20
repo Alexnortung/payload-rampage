@@ -53,9 +53,9 @@ class Weapon extends GameObject
 
         let options = {tags: ['bullet']};
 
-        new ShotgunBullet(this.game, pos, new Vector(2, 2), options, dirStraight, 1000);
-        new ShotgunBullet(this.game, pos, new Vector(2, 2), options, dirUp, 1000);
-        new ShotgunBullet(this.game, pos, new Vector(2, 2), options, dirDown, 1000);
+        new ShotgunBullet(this.game, pos, new Vector(2, 2), options, dirStraight, Math.floor(random(500, 1000)));
+        new ShotgunBullet(this.game, pos, new Vector(2, 2), options, dirUp, Math.floor(random(500, 1000)));
+        new ShotgunBullet(this.game, pos, new Vector(2, 2), options, dirDown, Math.floor(random(500, 1000)));
     }
 
 }

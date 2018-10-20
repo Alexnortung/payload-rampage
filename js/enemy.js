@@ -75,6 +75,7 @@ class Enemy extends MovableObject{
       console.log(this.health);
       this.health -= gameObject.damage;
       gameObject.destroy();
+      new FloatingText(this.game, new Vector(this.position.x, this.position.y - random(25, 75)), new Vector(-0.15, -0.30), new Vector(0, 0), {damageAmount: gameObject.damage, maxTick: 60,});
       //console.log(gameObject);
     }
   }

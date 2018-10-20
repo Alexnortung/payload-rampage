@@ -112,7 +112,11 @@ class TowerDefenseGame {
     this.gold = 100;
     this.gameObjects = [];
     this._newId = 0;
+<<<<<<< HEAD
     this.tick = 0;
+=======
+    this.gameOver = false;
+>>>>>>> 0599634df8a17b85925451739e2b7c78bfe06fb5
 
     if (typeof debug != 'undefined')
     {

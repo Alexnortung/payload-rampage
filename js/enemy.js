@@ -6,10 +6,12 @@ class Enemy extends MovableObject{
       typeof options.isFaceingRight === "boolean" ? this.isFaceingRight = options.isFaceingRight : this.isFaceingRight = true;
       typeof options.enemyId === "number" ? this.enemyId = options.enemyId: this.enemyId = 0;
       typeof options.defaultSpeed === "number" ? this.defaultSpeed = options.defaultSpeed : this.defaultSpeed = 2;
+      typeof options.damage === "number" ? this.damage = options.damage : this.damage = 1;
     } else {
       this.isFaceingRight = true;
       this.enemyId = 0;
       this.defaultSpeed = 2;
+      this.damage = 1;
     }
 
 

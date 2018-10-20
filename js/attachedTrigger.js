@@ -14,4 +14,16 @@ class AttachedTrigger extends Trigger {
     this.size = this.attached.size;
     Trigger.prototype.update.call(this);
   }
+
+  draw()
+  {
+    if(this.game.debug)
+    {
+      fill(255, 255, 255, 0);
+      stroke(0, 255, 0);
+      rect(this.position.x, this.position.y, this.size.x, this.size.y);
+    }
+  }
+
+
 }

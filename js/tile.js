@@ -58,11 +58,23 @@ class Tile extends GameObject
             case 11:
                 return images.grass;
 
+            case 16:
+                return images.portal_top_left;
+            
+            case 17:
+                return images.portal_top_right;
+
             case 18:
                 return images.crystal_top_left;
 
             case 19:
                 return images.crystal_top_right;
+
+            case 21:
+                return images.portal_bot_left;
+
+            case 22:
+                return images.portal_bot_right;
 
             case 23:
                 return images.crystal_bot_left;

@@ -49,7 +49,7 @@ class GameManager
   {
     this.amountSpawned++;
   
-    /*let options = {
+    let options = {
       enemy_id: 1,
       isSolid: true,
       health: 1000,
@@ -59,7 +59,7 @@ class GameManager
       damage: 1,
     };
 
-    new Enemy(this.game, this.portal.position, new Vector(32, 32), options);*/
+    new Enemy(this.game, this.portal.position, new Vector(32, 32), options);
 
     if(this.amountSpawned == this.amountToSpawn)
     {

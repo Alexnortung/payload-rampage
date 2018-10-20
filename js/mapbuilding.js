@@ -46,12 +46,15 @@ class MapBuilding
                             let position = new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight);
                             let size = new Vector(this.mapData.tilewidth, this.mapData.tileheight);
         
-                            let firstTile = new Tile(this.game, position, size, {}, images, id);
-                            let core = new Portal(this.game, position, new Vector(size.x * 2, size.y * 2), {tags: ['Portal']}, firstTile);
+                            let options = {isSolid: false};
+
+                            let firstTile = new Tile(this.game, position, size, options, images, id);
+                            let core = new Portal(this.game, position, new Vector(size.x * 2, size.y * 2), {isSolid: false,tags: ['Portal']}, firstTile);
                         }
                         else if(id == 32 || id == 33 || id == 34)
                         {
-                            let tile = new Tile(this.game, new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight), new Vector(this.mapData.tilewidth, this.mapData.tileheight), {isSolid: false}, images, id);
+                            let options = {isSolid: false};
+                            let tile = new Tile(this.game, new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight), new Vector(this.mapData.tilewidth, this.mapData.tileheight), options, images, id);
                             let core = this.game.findGameObjectByTag('Portal');
                             console.log(core);
                             if (core != null)

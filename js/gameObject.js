@@ -2,7 +2,7 @@ class GameObject{
   constructor(game, position, size, options){
     this.position = position;
     this.size = size;
-    this.id = game.getNewId();
+    this.gameObjectId = game.getNewId();
 
     this.game = game;
     game.gameObjects.push(this);
@@ -22,15 +22,23 @@ class GameObject{
 
   }
 
-  overlaps(otherGameObject){
+  overlaps(otherGameObject, newPos){
+    let pos = otherGameObject.position;
+    if (typeof newPos === "object") {
+      pos = newPos;
+    }
     const isOverlapping = isRectangleOverlapping(this.position, this.position.add(this.size),
-    otherGameObject.position, otherGameObject.position.add(otherGameObject.size));
+    pos, pos.add(otherGameObject.size));
     return isOverlapping;
   }
 
   overlapsPosition(position){
-    const isOverlapping = isPointInsideRectangle(position, this.position, this.position.add(this.size));
+    const isOverlapping = isRectangleOverlapping(position, position, this.position, this.position.add(this.size));
     return isOverlapping;
+  }
+
+  hasTag(tag){
+    return this.tags.indexOf(tag) != -1
   }
 
   destroy(){
@@ -43,7 +51,7 @@ class GameObject{
     {
       fill(255, 255, 255, 0);
       stroke(255, 0, 0);
-      
+
       rect(this.position.x, this.position.y, this.size.x, this.size.y);
     }
   }

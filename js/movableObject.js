@@ -80,10 +80,10 @@ class MovableObject extends GameObject
       // console.log(ladders);
       if (ladders.length >= 1 && !this._onLadder) {
         this.enterLadder();
-        console.log("entered ladders");
+        // console.log("entered ladders");
       } else if (ladders.length == 0 && this._onLadder) {
         this.leaveLadder();
-        console.log("left ladders");
+        // console.log("left ladders");
       }
 
 
@@ -92,6 +92,7 @@ class MovableObject extends GameObject
 
 
       this.position = this.position.add(this.velocity);
+      this.position = new Vector(Math.round(this.position.x), Math.round(this.position.y))
 
 
     }

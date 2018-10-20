@@ -179,7 +179,6 @@ class TowerDefenseGame {
 
         if(tag == searchTag)
         {
-          //console.log(elem);
           return elem;
         }
 
@@ -213,7 +212,7 @@ class TowerDefenseGame {
 
   destroyGameObject(id){
     for (var i = 0; i < this.gameObjects.length; i++) {
-      if (this.gameObjects[i].id === id) {
+      if (this.gameObjects[i].gameObjectId === id) {
         this.gameObjects.splice(i,1);
         return true;
       }

@@ -4,8 +4,13 @@ class Player extends MovableObject
   {
     super(game, position, size, options);
 
+    this.weapon = new Weapon(this.game, this.position, new Vector(1, 1), 0.2, {}, "shotgun");
+
+    this.isFacingRight = true;
+
     window.addEventListener('keydown',(e)=>this.setDirectionPress(e),false);
     window.addEventListener('keyup',(e)=>this.setDirectionRelease(e),false);
+    window.addEventListener('click', (e)=>this.Fire1(e), false);
   }
 
   drawPlayer()
@@ -17,15 +22,17 @@ class Player extends MovableObject
   setDirectionPress(e)
   {
     console.log("press: " + e.keyCode);
-    if(e.keyCode == 68)
+    if(e.keyCode == 68) // D
     {
+      this.isFacingRight = true;
       this.setVelocity(new Vector(3, 0));
     }
-    else if (e.keyCode == 65)
+    else if (e.keyCode == 65) // A
     {
+      this.isFacingRight = false;
       this.setVelocity(new Vector(-3, 0));
     }
-    else if(e.keyCode == 32)
+    else if(e.keyCode == 32) // Space
     {
       if(this.isGrounded)
       {
@@ -37,13 +44,31 @@ class Player extends MovableObject
   setDirectionRelease(e)
   {
     console.log("release: " + e.keyCode);
-    if(e.keyCode == 68)
+    if(e.keyCode == 68) // D
     {
       this.setVelocity(new Vector(0, 0));
     }
-    else if(e.keyCode == 65)
+    else if(e.keyCode == 65) // A
     {
       this.setVelocity(new Vector(0,0));
+    }
+  }
+
+  Fire1(e)
+  {
+    if(typeof this.weapon != 'undefined' || this.weapon != null)
+    {
+      let dir;
+      if(this.isFacingRight)
+      {
+        dir = new Vector(1, 0);
+      }
+      else
+      {
+        dir = new Vector(-1, 0);
+      }
+
+      this.weapon.shoot(this.position, dir, this.size);
     }
   }
 }

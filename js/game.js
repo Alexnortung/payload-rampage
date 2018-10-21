@@ -126,7 +126,7 @@ function preload()
     Arch_midterbjælke: Arch_midterbjælke_img,
     Arch_t_section_bund: Arch_t_section_bund_img,
     Arch_t_section_top: Arch_t_section_top_img,
-    
+
 
     mine_cart_stopper: cart_stopper,
     mine_empty: mine_empty,
@@ -417,6 +417,10 @@ class TowerDefenseGame {
       //console.log(collisions);
     }
     return collisions;
+  }
+
+  spendGold(amount){
+    this.gold-=amount;
   }
 
   mousePress(){

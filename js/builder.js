@@ -77,12 +77,17 @@ class Builder extends GameObject {
 
   }
 
+  spendGold(){
+    this.game.spendGold(this.selectedTrap._defaultCost);
+  }
+
   buildTrap(){
   // console.log("trying to build trap");
     if (this.canAffordTrap(this.trapSelected) && this.isPositionBuildable()) {
       // console.log("building trap");
       //yes build it
       new this.trapSelected(this.game, this.position);
+
 
       return true;
     }

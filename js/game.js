@@ -4,7 +4,7 @@ function setup()
 {
   createCanvas(800, 640);
   background(52);
-  game = new TowerDefenseGame(false);
+  game = new TowerDefenseGame(true);
 }
 
 function mousePressed() {

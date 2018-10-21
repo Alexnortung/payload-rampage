@@ -12,6 +12,6 @@ class Life extends UI
         textSize(16);
         let core = this.game.findGameObjectByTag("Core");
         let hp = core.health;
-        text("Health: " + hp, this.position.x, this.position.y);
+        text("Health " + hp, this.position.x, this.position.y);
     }
 }

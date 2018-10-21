@@ -97,7 +97,7 @@ class Builder extends GameObject {
   }
 
   draw(){
-    if (this.game.debug) {
+    if (/*this.game.debug*/ true) {
       // console.log("drawing builder");
       push();
       fill(255, 255, 255, 0);

@@ -10,6 +10,6 @@ class Gold extends UI
     {
         textFont(font);
         textSize(16);
-        text("Gold: " + this.game.gold, this.position.x, this.position.y);
+        text("Gold " + this.game.gold, this.position.x, this.position.y);
     }
 }

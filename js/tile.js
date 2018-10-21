@@ -29,7 +29,7 @@ class Tile extends GameObject
         }
         else
         {
-            console.log(this.imageId);
+            // console.log(this.imageId);
             fill(0);
             rect(this.position.x, this.position.y, this.size.x, this.size.y);
         }
@@ -74,10 +74,10 @@ class Tile extends GameObject
 
             case 13:
                 return images.half_buttom;
-            
+
             case 14:
                 return images.half_buttom;
-                
+
             case 15:
                 return images.gem;
 
@@ -107,7 +107,7 @@ class Tile extends GameObject
 
             case 26:
                 return images.box_3;
-            
+
             case 27:
                 return images.box_4;
 
@@ -133,8 +133,8 @@ class Tile extends GameObject
                 return images.Arch_right_top;
 
             case 37:
-                return images.Arch_midterbjælke;
-            
+                return images.Arch_midterbjaelke;
+
             case 38:
                 return images.Arch_t_section_top;
 
@@ -146,16 +146,16 @@ class Tile extends GameObject
 
             case 43:
                 return images.crystal_bot_left;
-            
+
             case 44:
                 return images.crystal_bot_right;
 
             case 45:
                 return images.Arch_left_bund;
-            
+
             case 46:
                 return images.Arch_right_bund;
-            
+
             case 48:
                 return images.Arch_t_section_bund;
 
@@ -177,7 +177,7 @@ class Tile extends GameObject
             case 56:
                 return images.misc_torch;
 
-            
+
 
             default:
                 return null;

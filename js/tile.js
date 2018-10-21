@@ -29,7 +29,7 @@ class Tile extends GameObject
         }
         else
         {
-            //console.log(this.imageId);
+            console.log(this.imageId);
             fill(0);
             rect(this.position.x, this.position.y, this.size.x, this.size.y);
         }
@@ -91,7 +91,7 @@ class Tile extends GameObject
                 return images.bg_rib;
 
             case 19:
-                return images.stone_3;
+                return images.bg_stone_3;
 
             case 21:
                 return images.grass;

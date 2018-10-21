@@ -55,7 +55,7 @@ class GameManager
     let options = {
       enemyId: 1,
       isSolid: true,
-      health: 1000,
+      health: this.round  * 100,
       tags: ['enemy'],
       isFacingRight: false,
       defaultSpeed: 2,

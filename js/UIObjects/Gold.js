@@ -8,6 +8,8 @@ class Gold extends UI
 
     draw()
     {
+        textFont(font);
+        textSize(32);
         text("Gold: " + this.game.gold, this.position.x, this.position.y);
     }
 }

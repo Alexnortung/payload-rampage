@@ -18,6 +18,8 @@ class SpikeTrap extends Trap {
     });
     this.inRangeTriggers.push(rangeTrigger);
 
+    this.showingAttack = false;
+
   }
 
   attack(){
@@ -36,9 +38,22 @@ class SpikeTrap extends Trap {
   update(){
     // console.log(this.getEnemiesInRange());
     if (this.getEnemiesInRange().length >= 1 && this.canAttack()) {
+      this.showingAttack = true;
       this.attack();
     }
+    if (this.showingAttack && this.timeBetweenAttacks / 2 <= this.game.tick - this.lastAttackTick ) {
+      this.showingAttack = false;
+    }
 
+  }
+
+  draw() {
+    if (this.showingAttack) {
+      image(images.spike_open, this.position.x, this.position.y -16);
+
+    } else {
+      image(images.spike_closed, this.position.x, this.position.y -16);
+    }
   }
 
   static get _size() {

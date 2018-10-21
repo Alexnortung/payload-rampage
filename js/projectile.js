@@ -31,7 +31,7 @@ class Projectile extends MovableObject{
   update()
   {
     MovableObject.prototype.update.call(this);
-    console.log(this.damage);
+    // console.log(this.damage);
     this.damage -= this.damageDropoff;
     if(this.damage <= this.minDamage)
     {
@@ -46,6 +46,6 @@ class Projectile extends MovableObject{
   }
 
 
-  
+
 
 }

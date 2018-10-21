@@ -73,6 +73,11 @@ function preload()
   "assets/objects/enemies/monster-movement/Monster_movement3.png",
   "assets/objects/enemies/monster-movement/Monster_movement4.png",
   );
+  var baseTrap = "assets/objects/traps/"
+  var spike_closed = loadImage(baseTrap+"Spikes-Closed-v1.png");
+  var spike_open = loadImage(`${baseTrap}Spikes-Open-v1.png`);
+
+
 
   images =
   {
@@ -128,7 +133,7 @@ function preload()
     Arch_midterbjælke: Arch_midterbjælke_img,
     Arch_t_section_bund: Arch_t_section_bund_img,
     Arch_t_section_top: Arch_t_section_top_img,
-    
+
 
     mine_cart_stopper: cart_stopper,
     mine_empty: mine_empty,
@@ -137,6 +142,9 @@ function preload()
 
     misc_stones: misc_stones,
     misc_torch: misc_torch,
+
+    spike_open: spike_open,
+    spike_closed: spike_closed,
 
   };
 

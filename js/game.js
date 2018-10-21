@@ -11,6 +11,10 @@ function mousePressed() {
   game.mousePress();
 }
 
+function draw() {
+  game.draw();
+}
+
 class TowerDefenseGame {
   constructor(debug){
     this.game = this;
@@ -76,7 +80,7 @@ class TowerDefenseGame {
       }
     }
 
-    this.draw();
+
     this.tick++;
   }
 

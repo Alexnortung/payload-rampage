@@ -23,6 +23,11 @@ class Enemy extends MovableObject{
 
   }
 
+  dealDamage(damage){
+    console.log("took damage");
+    MovableObject.prototype.dealDamage.call(this,damage);
+  }
+
 
 
   update() {

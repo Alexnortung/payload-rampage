@@ -42,7 +42,7 @@ class GameObject{
 
   hasTag(tag){
     const tagsToLower = this.tags.map(tagInArr =>{
-      if (tagInArr === "string") {
+      if (typeof tagInArr === "string") {
         return tagInArr.toLowerCase();
       } else {
         // console.log(tagInArr);

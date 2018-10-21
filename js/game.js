@@ -107,9 +107,13 @@ function setup()
   game = new TowerDefenseGame(true);
 }
 
+function mousePressed() {
+  game.mousePress();
+}
+
 class TowerDefenseGame {
   constructor(debug){
-    this.gold = 100;
+    this.gold = 200;
     this.gameObjects = [];
     this._newId = 0;
 
@@ -136,6 +140,7 @@ class TowerDefenseGame {
     new Gold(this, new Vector(15, 30), new Vector(0, 0), {});
 
     this.gm = new GameManager(this);
+    this.builder = new Builder(this);
 
     setInterval(()=>this.update(), 16);
   }
@@ -346,5 +351,9 @@ class TowerDefenseGame {
       // console.log(collisions);
     }
     return collisions;
+  }
+
+  mousePress(){
+    this.builder.mousePress();
   }
 }

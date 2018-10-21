@@ -62,9 +62,7 @@ class GameManager
       damage: 1,
     };
 
-    console.log("enemy Spawned");
-
-    new Enemy(this.game, new Vector(18*32, 32), new Vector(32, 32), options);
+    new Enemy(this.game, this.portal.position, new Vector(32, 32), options);
 
     this.checkRoundEnd();
   }

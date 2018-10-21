@@ -5,7 +5,7 @@ class GameManager
     this.game = game;
     this.round = 1;
     this.round_begun = false;
-    this.amountToSpawn = this.round * 10;
+    this.amountToSpawn = 1;//this.round * 10;
     this.amountSpawned = 0;
 
     this.enemiess = [];
@@ -32,7 +32,7 @@ class GameManager
         clearInterval(this.interval);
         this.round_begun = false;
         this.round++;
-        this.amountToSpawn = 10 * this.round;
+        this.amountToSpawn = 1;//10 * this.round;
         this.amountSpawned = 0;
       }
     }

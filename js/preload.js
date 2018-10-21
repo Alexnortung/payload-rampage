@@ -1,8 +1,11 @@
 var images = {};
 var animations = {};
+var font;
 
 function preload()
 {
+
+  font = loadFont('assets/fonts/pixelart.ttf');
 
   const player_img = loadImage("assets/sprites/Player1-v1.png");
 

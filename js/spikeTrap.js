@@ -21,7 +21,7 @@ class SpikeTrap extends Trap {
   }
 
   attack(){
-    console.log("attacking!");
+    // console.log("attacking!");
     const enemies = this.getEnemiesInRange();
     enemies.forEach(enemy => {
       enemy.dealDamage(this.damage);

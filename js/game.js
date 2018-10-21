@@ -153,9 +153,14 @@ function setup()
   game = new TowerDefenseGame(true);
 }
 
+function mousePressed() {
+  game.mousePress();
+}
+
 class TowerDefenseGame {
   constructor(debug){
-    this.gold = 100;
+    this.game = this;
+    this.gold = 200;
     this.gameObjects = [];
     this._newId = 0;
 
@@ -182,6 +187,11 @@ class TowerDefenseGame {
     //new Gold(this, new Vector(15, 30), new Vector(0, 0), {});
 
     this.gm = new GameManager(this);
+    this.builder = new Builder(this);
+
+    this.otherVals = {
+      frameRate: frameRate()
+    }
 
     setInterval(()=>this.update(), 16);
   }
@@ -216,9 +226,32 @@ class TowerDefenseGame {
     this.tick++;
   }
 
+  getGameObjectsAtExactPosition(position){
+    const gameObjects = [];
+    for (let i = 0; i < this.gameObjects.length; i++) {
+      const cg = this.gameObjects[i];
+      if (cg.position.x == position.x && cg.position.y == position.y) {
+        gameObjects.push(cg);
+      }
+    }
+    return gameObjects;
+
+  }
+
   draw()
   {
     this.player.drawPlayer();
+    if (this.debug) {
+      if (this.tick % 60 == 0) {
+        this.otherVals.frameRate = frameRate()
+
+      }
+      push();
+      textAlign(LEFT, BOTTOM)
+      text(this.otherVals.frameRate, 5, height-5 )
+
+      pop();
+    }
   }
 
   findGameObjectByTag(searchTag)
@@ -384,5 +417,9 @@ class TowerDefenseGame {
       //console.log(collisions);
     }
     return collisions;
+  }
+
+  mousePress(){
+    this.builder.mousePress();
   }
 }

@@ -10,6 +10,9 @@ class GameObject{
     if (typeof options === "object") {
       typeof options.isSolid === "boolean" ? this.isSolid = options.isSolid : this.isSolid = false;
       typeof options.tags === "object" ? this.tags = options.tags : this.tags = [];
+    } else {
+      this.isSolid = false;
+      this.tags = [];
     }
 
   }
@@ -38,7 +41,14 @@ class GameObject{
   }
 
   hasTag(tag){
-    const tagsToLower = this.tags.map(tagInArr => tagInArr.toLowerCase())
+    const tagsToLower = this.tags.map(tagInArr =>{
+      if (typeof tagInArr === "string") {
+        return tagInArr.toLowerCase();
+      } else {
+        // console.log(tagInArr);
+        return "";
+      }
+    });
     return tagsToLower.indexOf(tag.toLowerCase()) != -1
   }
 

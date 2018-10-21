@@ -98,9 +98,12 @@ class MovableObject extends GameObject
     }
 
     dealDamage(damage){
+      // console.log("took damage again");
       this.health -= damage;
+      new FloatingText(this.game, new Vector(this.position.x, this.position.y - random(25, 75)), new Vector(-0.15, -0.30), new Vector(0, 0), {damageAmount: damage, maxTick: 60,});
       if (this.health <= 0) {
         this.onBelowZeroHealth();
+
       }
 
     }

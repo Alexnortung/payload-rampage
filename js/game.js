@@ -273,16 +273,11 @@ class TowerDefenseGame {
     for (let i = 0; i < this.gameObjects.length; i++)
     {
       let elem = this.gameObjects[i];
-      for (let j = 0; j < elem.tags.length; j++)
-      {
-        let tag = elem.tags[j];
-
-        if(tag == searchTag)
-        {
-          gameObjects.push(elem);
-        }
+      if (elem.hasTag(searchTag)) {
+        gameObjects.push(elem);
 
       }
+
 
     }
     return gameObjects;

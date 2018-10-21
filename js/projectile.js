@@ -9,13 +9,34 @@ class Projectile extends MovableObject{
         canHasGravity: false,
         tags: ['projectile'],
       }
-
     }
 
     super(game, position, size, options);
 
+    if(typeof options === "object")
+    {
+      typeof options.damageDropoff === "number" ? this.damageDropoff = options.damageDropoff : this.damageDropoff = 10;
+      typeof options.minDamage === "number" ? this.minDamage = options.minDamage : this.minDamage = 100;
+    }
+    else
+    {
+      this.minDamage = 100;
+      this.damageDropoff = 10;
+    }
+
     this.velocity = velocity;
     this.damage = damage;
+  }
+
+  update()
+  {
+    MovableObject.prototype.update.call(this);
+    console.log(this.damage);
+    this.damage -= this.damageDropoff;
+    if(this.damage <= this.minDamage)
+    {
+      this.damage = this.minDamage;
+    }
   }
 
   draw()
@@ -23,4 +44,8 @@ class Projectile extends MovableObject{
     fill(255);
     rect(this.position.x, this.position.y, this.size.x, this.size.y);
   }
+
+
+  
+
 }

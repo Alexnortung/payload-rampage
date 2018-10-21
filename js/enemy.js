@@ -14,7 +14,7 @@ class Enemy extends MovableObject{
       this.damage = 1;
     }
 
-
+    this.floatingHealth = new FloatingHealth(this.game, this.position, this.size, this, {});
 
   }
 
@@ -60,6 +60,7 @@ class Enemy extends MovableObject{
     if(this.health <= 0)
     {
       this.destroy();
+      this.floatingHealth.destroy();
       this.game.gold += Math.floor(random(50, 200));
     }
   }
@@ -99,8 +100,8 @@ class Enemy extends MovableObject{
     }
     scale(...scaleVals);
 
-    //animation(images.monster_walk, ...scalePos);
-    //image(images.enemy_1_lvl_1, ...scalePos);
+    //animation(animations.monster_walk, this.position.x, this.position.y);
+    image(images.enemy_1_lvl_1, ...scalePos);
     pop();
   }
 

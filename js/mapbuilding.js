@@ -22,46 +22,8 @@ class MapBuilding
                         var y = Math.floor( i / this.mapData.width);
                         var x = i % this.mapData.width;
     
-                        if(id == 33)
-                        {
-                            let position = new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight);
-                            let size = new Vector(this.mapData.tilewidth, this.mapData.tileheight);
-        
-                            let firstTile = new Tile(this.game, position, size, {isSolid: false,}, images, id);
-                            let core = new CoreCrystal(this.game, position, new Vector(size.x * 2, size.y * 2), {isSolid:false,tags: ['Core']}, firstTile);
-                            //console.log(core);
-                        }
-                        else if(id == 34 || id == 43 || id == 44)
-                        {
-                            let tile = new Tile(this.game, new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight), new Vector(this.mapData.tilewidth, this.mapData.tileheight), {isSolid: false}, images, id);
-                            let core = this.game.findGameObjectByTag('Core');
-                            if (typeof core.add == 'function')
-                            {
-                                core.add(tile);
-                            }
-                        }
-                        else if(id == 31)
-                        {
-                            let position = new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight);
-                            let size = new Vector(this.mapData.tilewidth, this.mapData.tileheight);
-        
-                            let options = {isSolid: false};
-
-                            let firstTile = new Tile(this.game, position, size, options, images, id);
-                            let core = new Portal(this.game, position, new Vector(size.x * size.x, size.y * size.y), {isSolid: false,tags: ['Portal']}, firstTile);
-                        }
-                        else if(id == 32 || id == 41 || id == 42)
-                        {
-                            let options = {isSolid: false};
-                            let tile = new Tile(this.game, new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight), new Vector(this.mapData.tilewidth, this.mapData.tileheight), options, images, id);
-                            let core = this.game.findGameObjectByTag('Portal');
-                            //console.log(core);
-                            if (core != null)
-                            {
-                                core.add(tile);
-                            }
-                        }
-                        else if(id == 13)
+                        
+                        if(id == 13)
                         {
                             new Tile(this.game, new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight), new Vector(this.mapData.tilewidth, (this.mapData.tileheight / 2)), {isSolid: true}, images, id);
                         }
@@ -90,10 +52,51 @@ class MapBuilding
                         var y = Math.floor( i / this.mapData.width);
                         var x = i % this.mapData.width;
 
-                        let options = {
-                            isSolid: false,
-                        };
-                        new Tile(this.game, new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight), new Vector(this.mapData.tilewidth, this.mapData.tileheight), options, images, id);
+                        if(id == 33)
+                        {
+                            let position = new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight);
+                            let size = new Vector(this.mapData.tilewidth, this.mapData.tileheight);
+        
+                            let firstTile = new Tile(this.game, position, size, {isSolid: false,}, images, id);
+                            let core = new CoreCrystal(this.game, position, new Vector(size.x * 2, size.y * 2), {isSolid:false,tags: ['Core']}, firstTile);
+                        }
+                        else if(id == 34 || id == 43 || id == 44)
+                        {
+                            let tile = new Tile(this.game, new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight), new Vector(this.mapData.tilewidth, this.mapData.tileheight), {isSolid: false}, images, id);
+                            let core = this.game.findGameObjectByTag('Core');
+                            if (typeof core.add == 'function')
+                            {
+                                core.add(tile);
+                            }
+
+                        }
+                        else if(id == 31)
+                        {
+                            let position = new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight);
+                            let size = new Vector(this.mapData.tilewidth, this.mapData.tileheight);
+        
+                            let options = {isSolid: false};
+
+                            let firstTile = new Tile(this.game, position, size, options, images, id);
+                            let core = new Portal(this.game, position, new Vector(size.x * size.x, size.y * size.y), {isSolid: false,tags: ['Portal']}, firstTile);
+                        }
+                        else if(id == 32 || id == 41 || id == 42)
+                        {
+                            let options = {isSolid: false};
+                            let tile = new Tile(this.game, new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight), new Vector(this.mapData.tilewidth, this.mapData.tileheight), options, images, id);
+                            let core = this.game.findGameObjectByTag('Portal');
+                            if (core != null)
+                            {
+                                core.add(tile);
+                            }
+                        }
+                        else
+                        {
+                            let options = {
+                                isSolid: false,
+                            };
+                            new Tile(this.game, new Vector(x * this.mapData.tilewidth, y * this.mapData.tileheight), new Vector(this.mapData.tilewidth, this.mapData.tileheight), options, images, id);
+                        }
                     }
                 }
             }

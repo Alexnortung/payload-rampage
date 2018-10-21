@@ -1,6 +1,6 @@
 let game;
 var images = {};
-var animation = {};
+var animations = {};
 
 function preload()
 {
@@ -66,11 +66,11 @@ function preload()
 
   var enemy_1_lvl_1 = loadImage("assets/objects/enemies/Monster.png");
 
-  //var monsterWalk = loadAnimation("assets/objects/enemies/monster-movement/Monster_movement.png");
-  /*"assets/objects/enemies/monster-movement/Monster_movement2.png",
+  var monsterWalk = loadAnimation("assets/objects/enemies/monster-movement/Monster_movement.png",
+  "assets/objects/enemies/monster-movement/Monster_movement2.png",
   "assets/objects/enemies/monster-movement/Monster_movement3.png",
   "assets/objects/enemies/monster-movement/Monster_movement4.png",
-  );*/
+  );
 
   images =
   {
@@ -139,10 +139,10 @@ function preload()
   };
 
 
-/*  animation =
+  animations =
   {
     monsterWalk: monsterWalk,
-  };*/
+  };
 }
 
 
@@ -183,8 +183,8 @@ class TowerDefenseGame {
 
     this.mapbuilder.createMap();
 
-    //new Life(this, new Vector(15, 15), new Vector(0, 0), {});
-    //new Gold(this, new Vector(15, 30), new Vector(0, 0), {});
+    new Life(this, new Vector(15, 15), new Vector(0, 0), {});
+    new Gold(this, new Vector(15, 30), new Vector(0, 0), {});
 
     this.gm = new GameManager(this);
     this.builder = new Builder(this);

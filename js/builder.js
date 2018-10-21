@@ -78,7 +78,8 @@ class Builder extends GameObject {
   }
 
   spendGold(){
-    this.game.spendGold(this.selectedTrap._defaultCost);
+    console.log(this);
+    this.game.spendGold(this.trapSelected._defaultCost);
   }
 
   buildTrap(){
@@ -87,7 +88,7 @@ class Builder extends GameObject {
       // console.log("building trap");
       //yes build it
       new this.trapSelected(this.game, this.position);
-      spendGold();
+      this.spendGold();
 
 
       return true;

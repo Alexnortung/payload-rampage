@@ -148,7 +148,7 @@ function preload()
 
 function setup()
 {
-  createCanvas(800, 800);
+  createCanvas(800, 640);
   background(52);
   game = new TowerDefenseGame(true);
 }

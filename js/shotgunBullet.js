@@ -17,4 +17,12 @@ class ShotgunBullet extends Projectile {
       this.destroy();
     }
   }
+
+  canMoveThrough(gameObj){
+    if (gameObj.hasTag("player")) {
+      return true;
+    }
+
+    return false;
+  }
 }

@@ -44,7 +44,7 @@ class Player extends MovableObject
 
   setDirectionPress(e)
   {
-    e.preventDefault();
+    // e.preventDefault();
     console.log("press: " + e.keyCode);
     if(e.keyCode == 68) // D
     {

@@ -48,6 +48,7 @@ class MovableObject extends GameObject
 
       }
 
+
       //check collisions
       const collisions = this.game.checkCollisions(this);
       if(collisions.length == 0){
@@ -92,7 +93,13 @@ class MovableObject extends GameObject
 
 
       this.position = this.position.add(this.velocity);
-      this.position = new Vector(Math.round(this.position.x), Math.round(this.position.y))
+      this.position = new Vector(Math.round(this.position.x), Math.round(this.position.y));
+      // console.time("stuck");
+      // console.log("stuck check");
+      if (this.isStuck()) {
+        this.unStuck();
+      }
+      // console.timeEnd("stuck");
 
 
     }
@@ -121,6 +128,72 @@ class MovableObject extends GameObject
 
       }
       return false;
+    }
+
+    unStuck(){
+      //get overlaps
+      const overlaps = game.findOverlaps(this);
+      for (let i = 0; i < overlaps.length; i++) {
+        const gameObj = overlaps[i];
+        if (gameObj.isSolid && !this.canMoveThrough(overlaps[i])) {
+          // diff from gameObj to this
+          const diff = this.position.subtract(gameObj.position);
+          const diffCenter = this.centerPosition.subtract(gameObj.centerPosition);
+          const positiveX = (diffCenter.x > 0);
+          const positiveY = (diffCenter.y > 0);
+          // console.log(diff, positiveX);
+          let moveVector;
+
+          if (Math.abs(diff.x) > Math.abs(diff.y)) {
+            //move x
+            if (positiveX) {
+              //move right
+              //get rightPos of this
+              const rightPos = gameObj.position.add(new Vector(gameObj.size.x, 0));
+              //set right pos to equal position.x of gameObj
+              //get diff from rightpos(this) to position.x of gameObj
+              const newDiff = rightPos.subtract(this.position);
+              moveVector = newDiff;
+
+
+            } else {
+              //move left
+
+              const rightPos = this.position.add(new Vector(this.size.x, 0));
+
+              const newDiff = gameObj.position.subtract(rightPos);
+              moveVector = newDiff;
+
+            }
+          } else {
+            //move y
+            if (positiveY) {
+              //move down
+              //get bottom pos of game object
+              const bottomPos = gameObj.position.add(new Vector(0, gameObj.size.y))
+              //set the bottom pos.y to equal position.y of this
+              //get diff from bottompos to pos of this
+              const newDiff = this.position.subtract(bottomPos);
+              moveVector = newDiff;
+            }else {
+              //move up
+              //get bottom pos of this object
+              const bottomPos = this.position.add(new Vector(0, this.size.y))
+              //set the bottom pos.y to equal position.y of gameObj
+              //get diff from bottompos to pos of gameObj
+              const newDiff = gameObj.position.subtract(bottomPos);
+              moveVector = newDiff;
+            }
+
+          }
+
+
+          this.position.addTo(moveVector);
+
+        }
+
+      }
+
     }
 
 }

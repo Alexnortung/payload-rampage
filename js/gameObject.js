@@ -25,6 +25,16 @@ class GameObject{
 
   }
 
+  get centerPosition(){
+    const center = this.position.add(this.size.divide(2));
+    return center;
+  }
+
+  set centerPosition(position){
+    const newPos = position.subtract(this.size.divide(2));
+    this.position = newPos;
+  }
+
   overlaps(otherGameObject, newPos){
     let pos = otherGameObject.position;
     if (typeof newPos === "object") {

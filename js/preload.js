@@ -54,7 +54,7 @@ function preload()
   var Arch_left_top_img = loadImage("assets/objects/arcs/Arch-left-top.png");
   var Arch_right_bund_img = loadImage("assets/objects/arcs/Arch-right-bund.png");
   var Arch_right_top_img = loadImage("assets/objects/arcs/Arch-right-top.png");
-  var Arch_midterbjælke_img = loadImage("assets/objects/arcs/Arch-midterbjaelke-top.png");
+  var Arch_midterbjaelke_img = loadImage("assets/objects/arcs/Arch-midterbjaelke-top.png");
   var Arch_t_section_bund_img = loadImage("assets/objects/arcs/Arch-T-section-bund.png");
   var Arch_t_section_top_img = loadImage("assets/objects/arcs/Arch-T-section-top.png");
 
@@ -130,7 +130,7 @@ function preload()
     Arch_left_top: Arch_left_top_img,
     Arch_right_bund: Arch_right_bund_img,
     Arch_right_top: Arch_right_top_img,
-    Arch_midterbjælke: Arch_midterbjælke_img,
+    Arch_midterbjaelke: Arch_midterbjaelke_img,
     Arch_t_section_bund: Arch_t_section_bund_img,
     Arch_t_section_top: Arch_t_section_top_img,
 

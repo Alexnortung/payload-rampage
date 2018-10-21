@@ -62,6 +62,7 @@ class Player extends MovableObject
       {
         this.setVelocity(new Vector(this.velocity.x, -5));
       }
+      return false;
     } else if (e.keyCode == 87) { //W
       if (this._onLadder) {
         this.setVelocity(new Vector(this.velocity.x, -3));

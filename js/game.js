@@ -2,7 +2,8 @@ let game;
 
 function setup()
 {
-  createCanvas(800, 640);
+  const c = createCanvas(800, 640);
+  c.parent("canvasContainer");
   background(52);
   game = new TowerDefenseGame(false);
 }

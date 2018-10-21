@@ -87,6 +87,7 @@ class Builder extends GameObject {
       // console.log("building trap");
       //yes build it
       new this.trapSelected(this.game, this.position);
+      spendGold();
 
 
       return true;
